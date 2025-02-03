@@ -11,7 +11,7 @@
         <h2 class="text-3xl font-bold text-center mb-8">About Us</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div>
-            <img src="https://via.placeholder.com/500x300" alt="Sri Lanka Police" class="rounded-lg shadow-lg">
+            <img src="{{ asset('assets/logo.png') }}" alt="Sri Lanka Police" class="rounded-lg shadow-lg">
           </div>
           <div>
             <p class="text-gray-700 mb-4">
