@@ -3,7 +3,7 @@
     <div class="container mx-auto flex justify-between items-center">
       <!-- Left Logo -->
       <div class="flex-shrink-0">
-        <img src="{{ asset('assets/logo_white.png') }}" alt="Sri Lanka Police Logo" class="h-32">
+        <img src="{{ asset('assets/logo_white.png') }}" alt="Sri Lanka Police Logo" class="h-16">
       </div>
       
       <!-- Footer Content -->
@@ -38,7 +38,7 @@
   
       <!-- Right Logo -->
       <div class="flex-shrink-0">
-        <img src="{{ asset('assets/logo2.png') }}" alt="Sri Lanka Police Logo" class="h-32">
+        <img src="{{ asset('assets/logo2.png') }}" alt="Sri Lanka Police Logo" class="h-16">
       </div>
     </div>
   
