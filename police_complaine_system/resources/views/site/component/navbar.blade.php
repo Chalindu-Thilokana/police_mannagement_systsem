@@ -53,7 +53,7 @@
                   </a>
                 @else
                   <a href="{{ route('login') }}" class="bg-blue-900 text-white px-4 py-2 rounded hover:bg-blue-700 active:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-600">
-                    Login/Register
+                    Login
                   </a>
                 @endauth
               @endif
@@ -97,7 +97,7 @@
   
     <!-- Animated floating elements -->
     <div class="absolute -top-10 -left-10 w-72 h-72 bg-blue-700 opacity-70 rounded-full mix-blend-multiply filter blur-2xl animate-float"></div>
-    <div class="absolute -bottom-10 -right-10 w-72 h-72 bg-red-700 opacity-70 rounded-full mix-blend-multiply filter blur-2xl animate-float animation-delay-2000"></div>
+    {{-- <div class="absolute -bottom-10 -right-10 w-72 h-72 bg-red-700 opacity-70 rounded-full mix-blend-multiply filter blur-2xl animate-float animation-delay-2000"></div> --}}
   
     <!-- Content -->
     <div class="relative z-10 flex items-center justify-center h-full">
