@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Modern Navbar</title>
+  <link rel="icon" type="image/png" href="{{ asset('assets/logo.png') }}">
+  <title>Sri Lanka Police CMS</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <script src="https://unpkg.com/flowbite@1.5.3/dist/flowbite.js"></script>
@@ -53,7 +54,7 @@
                   </a>
                 @else
                   <a href="{{ route('login') }}" class="bg-blue-900 text-white px-4 py-2 rounded hover:bg-blue-700 active:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-600">
-                    Login/Register
+                    Login
                   </a>
                 @endauth
               @endif
@@ -69,13 +70,13 @@
                     <a href="#" class="block py-2 pr-4 pl-3 text-blue-900 border-b border-blue-900 hover:text-blue-600 hover:bg-blue-950 lg:hover:bg-transparent lg:border-0 lg:p-0 dark:text-blue-900 dark:hover:text-blue-600 dark:hover:bg-blue-700 lg:dark:hover:bg-transparent dark:border-blue-700">Home</a>
                 </li>
                   <li>
-                    <a href="#" class="block py-2 pr-4 pl-3 text-blue-900 border-b border-blue-900 hover:text-blue-600 hover:bg-blue-950 lg:hover:bg-transparent lg:border-0 lg:p-0 dark:text-blue-900 dark:hover:text-blue-600 dark:hover:bg-blue-700 lg:dark:hover:bg-transparent dark:border-blue-700">About US</a>
+                    <a href="#about" class="block py-2 pr-4 pl-3 text-blue-900 border-b border-blue-900 hover:text-blue-600 hover:bg-blue-950 lg:hover:bg-transparent lg:border-0 lg:p-0 dark:text-blue-900 dark:hover:text-blue-600 dark:hover:bg-blue-700 lg:dark:hover:bg-transparent dark:border-blue-700">About US</a>
                   </li>
                   <li>
-                    <a href="#" class="block py-2 pr-4 pl-3 text-blue-900 border-b border-blue-900 hover:text-blue-600 hover:bg-blue-950 lg:hover:bg-transparent lg:border-0 lg:p-0 dark:text-blue-900 dark:hover:text-blue-600 dark:hover:bg-blue-700 lg:dark:hover:bg-transparent dark:border-blue-700">History</a>
+                    <a href="#services" class="block py-2 pr-4 pl-3 text-blue-900 border-b border-blue-900 hover:text-blue-600 hover:bg-blue-950 lg:hover:bg-transparent lg:border-0 lg:p-0 dark:text-blue-900 dark:hover:text-blue-600 dark:hover:bg-blue-700 lg:dark:hover:bg-transparent dark:border-blue-700">Services</a>
                   </li>
                   <li>
-                    <a href="#" class="block py-2 pr-4 pl-3 text-blue-900 border-b border-blue-900 hover:text-blue-600 hover:bg-blue-950 lg:hover:bg-transparent lg:border-0 lg:p-0 dark:text-blue-900 dark:hover:text-blue-600 dark:hover:bg-blue-700 lg:dark:hover:bg-transparent dark:border-blue-700">Services</a>
+                    <a href="#process" class="block py-2 pr-4 pl-3 text-blue-900 border-b border-blue-900 hover:text-blue-600 hover:bg-blue-950 lg:hover:bg-transparent lg:border-0 lg:p-0 dark:text-blue-900 dark:hover:text-blue-600 dark:hover:bg-blue-700 lg:dark:hover:bg-transparent dark:border-blue-700">Process</a>
                   </li>
                   <li>
                     <a href="#contact" class="block py-2 pr-4 pl-3 text-blue-900 border-b border-blue-900 hover:text-blue-600 hover:bg-blue-950 lg:hover:bg-transparent lg:border-0 lg:p-0 dark:text-blue-900 dark:hover:text-blue-600 dark:hover:bg-blue-700 lg:dark:hover:bg-transparent dark:border-blue-700">Contact Us</a>
@@ -97,7 +98,7 @@
   
     <!-- Animated floating elements -->
     <div class="absolute -top-10 -left-10 w-72 h-72 bg-blue-700 opacity-70 rounded-full mix-blend-multiply filter blur-2xl animate-float"></div>
-    <div class="absolute -bottom-10 -right-10 w-72 h-72 bg-red-700 opacity-70 rounded-full mix-blend-multiply filter blur-2xl animate-float animation-delay-2000"></div>
+    {{-- <div class="absolute -bottom-10 -right-10 w-72 h-72 bg-red-700 opacity-70 rounded-full mix-blend-multiply filter blur-2xl animate-float animation-delay-2000"></div> --}}
   
     <!-- Content -->
     <div class="relative z-10 flex items-center justify-center h-full">
