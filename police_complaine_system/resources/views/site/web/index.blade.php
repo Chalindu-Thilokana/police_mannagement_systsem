@@ -19,7 +19,6 @@
 
               <div class="flex flex-col gap-4 rounded-md border border-solid bg-gray-100 p-6 md:p-4">
                 <div class="flex items-center gap-x-2">
-                  <img src="https://firebasestorage.googleapis.com/v0/b/flowspark-1f3e0.appspot.com/o/Tailspark%20Images%2FPLaceholder%20Image%20Secondary.svg?alt=media&token=b8276192-19ff-4dd9-8750-80bc5f7d6844" alt="" class="h-12 w-12 rounded-full object-cover" />
                   <p class="text-sm font-semibold sm:text-base"> Vision </p>
                 </div>
                 <p class="text-sm"> Towards a Peaceful environment to live with confidence, without fear of Crime and Violence. </p>
@@ -29,7 +28,6 @@
 
               <div class="flex flex-col gap-4 rounded-md border border-solid bg-gray-100 p-6 md:p-4">
                 <div class="flex items-center gap-x-2">
-                  <img src="https://firebasestorage.googleapis.com/v0/b/flowspark-1f3e0.appspot.com/o/Tailspark%20Images%2FPLaceholder%20Image%20Secondary.svg?alt=media&token=b8276192-19ff-4dd9-8750-80bc5f7d6844" alt="" class="h-12 w-12 rounded-full object-cover" />
                   <p class="text-sm font-semibold sm:text-base"> Mission </p>
                 </div>
                 <p class="text-sm"> Sri Lanka Police is committed and confident to uphold and enforce the law of the land, to preserve the public order, prevent crime and Terrorism with prejudice to none – equity to all. </p>
