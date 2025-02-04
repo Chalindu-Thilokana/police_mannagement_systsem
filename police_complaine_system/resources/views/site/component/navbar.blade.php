@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" type="image/png" href="{{ asset('assets/logo.png') }}">
-  <title>Police CMS</title>
+  <title>Sri Lanka Police CMS</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <script src="https://unpkg.com/flowbite@1.5.3/dist/flowbite.js"></script>
