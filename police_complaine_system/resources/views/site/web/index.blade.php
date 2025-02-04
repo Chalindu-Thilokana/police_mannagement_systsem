@@ -6,48 +6,38 @@
    
 
     <!-- About Us Section -->
-    <section id="about" class="py-16">
-      <div class="container mx-auto px-4">
-        <h2 class="text-3xl font-bold text-center mb-8">About Us</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div>
-            <img src="{{ asset('assets/logo.png') }}" alt="Sri Lanka Police" class="rounded-lg shadow-lg">
-          </div>
-          <div>
-            <p class="text-gray-700 mb-4">
-              The Sri Lanka Police is dedicated to serving and protecting the people of Sri Lanka with integrity, professionalism, and dedication. Established in [year], we have a long history of maintaining public safety and order.
-            </p>
-            <p class="text-gray-700">
-              Our mission is to ensure a safe and secure environment for all citizens through community engagement, crime prevention, and effective law enforcement.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
 
-    
-    <section id="about">
-      <!-- Container -->
-      <div class="mx-auto w-full max-w-7xl px-5 py-12 md:px-10 md:py-16 lg:py-20">
-        <!-- Component -->
-        <div class="flex flex-col gap-14 lg:gap-20">
-          <!-- Image -->
-          <img src="https://firebasestorage.googleapis.com/v0/b/flowspark-1f3e0.appspot.com/o/Tailspark%20Images%2Fbg-about.png?alt=media&token=0d5ea1c5-61cf-4b0d-beab-bd023e3d9ee8" alt="" class="w-full" />
-          <!-- Content -->
-          <div class="flex flex-col gap-14 lg:gap-20">
-            <div class="flex flex-col md:flex-row gap-5">
-              <h4 class="text-xl md:text-2xl font-semibold flex-1">Vision</h4>
-              <p class="flex-1"> Towards a Peaceful environment to live with confidence, without fear of Crime and Violence. </p>
+    <section id="about"> <!-- Container -->
+      <div class="mx-auto w-full max-w-7xl px-5 py-12 md:px-10 md:py-16 lg:py-20"> <!-- Component -->
+        <div class="flex flex-col gap-8 lg:flex-row lg:gap-10"> <!-- Content -->
+          <div class="flex flex-col gap-8 lg:w-3/5">
+            <h2 class="mb-8 text-3xl font-bold md:text-5xl">About us</h2>
+            <p class="text-sm sm:text-base"> The Sri Lankan Police has a rich history dating back to 1865, evolving from a colonial force under British rule. Initially tasked with maintaining order, it has transformed into a modern law enforcement agency. The police play a crucial role in upholding law and order amidst various socio-political challenges. </p>
+            
+            <div class="my-8 h-px w-full bg-black"></div> <!-- Testimonials -->
+            <div class="grid gap-8 md:grid-cols-2 md:gap-4">
+
+              <div class="flex flex-col gap-4 rounded-md border border-solid bg-gray-100 p-6 md:p-4">
+                <div class="flex items-center gap-x-2">
+                  <img src="https://firebasestorage.googleapis.com/v0/b/flowspark-1f3e0.appspot.com/o/Tailspark%20Images%2FPLaceholder%20Image%20Secondary.svg?alt=media&token=b8276192-19ff-4dd9-8750-80bc5f7d6844" alt="" class="h-12 w-12 rounded-full object-cover" />
+                  <p class="text-sm font-semibold sm:text-base"> Vision </p>
+                </div>
+                <p class="text-sm"> Towards a Peaceful environment to live with confidence, without fear of Crime and Violence. </p>
+                <div class="flex items-center gap-2 sm:gap-x-4">
+                </div>
+              </div>
+
+              <div class="flex flex-col gap-4 rounded-md border border-solid bg-gray-100 p-6 md:p-4">
+                <div class="flex items-center gap-x-2">
+                  <img src="https://firebasestorage.googleapis.com/v0/b/flowspark-1f3e0.appspot.com/o/Tailspark%20Images%2FPLaceholder%20Image%20Secondary.svg?alt=media&token=b8276192-19ff-4dd9-8750-80bc5f7d6844" alt="" class="h-12 w-12 rounded-full object-cover" />
+                  <p class="text-sm font-semibold sm:text-base"> Mission </p>
+                </div>
+                <p class="text-sm"> Sri Lanka Police is committed and confident to uphold and enforce the law of the land, to preserve the public order, prevent crime and Terrorism with prejudice to none – equity to all. </p>
+              </div>
+
             </div>
-            <div class="flex flex-col md:flex-row gap-5">
-              <h4 class="text-xl md:text-2xl font-semibold flex-1">Mission</h4>
-              <p class="flex-1"> Sri Lanka Police is committed and confident to uphold and enforce the law of the land, to preserve the public order, prevent crime and Terrorism with prejudice to none – equity to all. </p>
-            </div>
-            <div class="flex flex-col md:flex-row gap-5">
-              <h4 class="text-xl md:text-2xl font-semibold flex-1">History</h4>
-              <p class="flex-1"> The Sri Lankan Police has a rich history dating back to 1865, evolving from a colonial force under British rule. Initially tasked with maintaining order, it has transformed into a modern law enforcement agency. The police play a crucial role in upholding law and order amidst various socio-political challenges. </p>
-            </div>
-          </div>
+          </div> <!-- Image -->
+          <div class="w-full rounded-md bg-gray-100 max-[991px]:h-[475px] lg:w-2/5"><img src="{{ asset('assets/about2.jpg') }}" alt="" width="500" height="800"></div>
         </div>
       </div>
     </section>
@@ -60,11 +50,11 @@
         <!-- Component -->
         <div class="flex flex-col items-center">
           <h2 class="text-center text-3xl font-bold md:text-5xl"> Services </h2>
-          <p class="mb-8 mt-4 text-center text-sm text-gray-500 sm:text-base md:mb-12 lg:mb-16"> Lorem ipsum dolor sit amet elit ut aliquam </p>
+          <p class="mb-8 mt-4 text-center text-sm text-gray-500 sm:text-base md:mb-12 lg:mb-16"> The services you offered </p>
           <!-- Content -->
           <div class="mb-6 grid gap-4 sm:grid-cols-2 sm:justify-items-stretch md:mb-10 md:grid-cols-3 lg:mb-12 lg:gap-6">
             <a href="#" class="flex flex-col gap-4 rounded-md border border-solid border-gray-300 px-4 py-8 md:p-0">
-              <img src="https://firebasestorage.googleapis.com/v0/b/flowspark-1f3e0.appspot.com/o/Tailspark%20Images%2FPlaceholder%20Image.svg?alt=media&token=375a1ea3-a8b6-4d63-b975-aac8d0174074" alt="" class="h-60 object-cover" />
+              <img src="{{ asset('assets/service1.png') }}" alt="" class="h-60" />
               <div class="px-6 py-4">
                 <p class="mb-4 text-xl font-semibold"> Online Complaint Registration </p>
                 <p class="mb-6 text-sm text-gray-500 sm:text-base lg:mb-8">Enables citizens to file complaints easily through a user-friendly online portal, enhancing accessibility and convenience. </p>
@@ -75,7 +65,7 @@
               </div>
             </a>
             <a href="#" class="flex flex-col gap-4 rounded-md border border-solid border-gray-300 px-4 py-8 md:p-0">
-              <img src="https://firebasestorage.googleapis.com/v0/b/flowspark-1f3e0.appspot.com/o/Tailspark%20Images%2FPlaceholder%20Image.svg?alt=media&token=375a1ea3-a8b6-4d63-b975-aac8d0174074" alt="" class="h-60 object-cover" />
+              <img src="{{ asset('assets/service2.png') }}" alt="" class="h-60" />
               <div class="px-6 py-4">
                 <p class="mb-4 text-xl font-semibold"> Complaint Tracking </p>
                 <p class="mb-6 text-sm text-gray-500 sm:text-base lg:mb-8"> Allows users to monitor the status of their complaints in real-time, ensuring transparency and accountability in the process. </p>
@@ -86,7 +76,7 @@
               </div>
             </a>
             <a href="#" class="flex flex-col gap-4 rounded-md border border-solid border-gray-300 px-4 py-8 md:p-0">
-              <img src="https://firebasestorage.googleapis.com/v0/b/flowspark-1f3e0.appspot.com/o/Tailspark%20Images%2FPlaceholder%20Image.svg?alt=media&token=375a1ea3-a8b6-4d63-b975-aac8d0174074" alt="" class="h-60 object-cover" />
+              <img src="{{ asset('assets/service3.png') }}" alt="" class="h-60" />
               <div class="px-6 py-4">
                 <p class="mb-4 text-xl font-semibold"> Feedback Mechanism </p>
                 <p class="mb-6 text-sm text-gray-500 sm:text-base lg:mb-8"> Provides a platform for citizens to share their experiences and suggestions, promoting continuous improvement in police services and community relations. </p>
