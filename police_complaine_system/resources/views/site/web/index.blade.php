@@ -187,7 +187,7 @@
           </div>
           <div class="mx-auto max-w-xl bg-gray-100 p-8 text-center">
             <h3 class="text-2xl font-bold md:text-3xl">Send us amessage</h3>
-            <p class="mx-auto mb-6 mt-4 max-w-lg text-sm text-gray-500 lg:mb-8"> Lorem ipsum dolor sit amet consectetur adipiscing elit ut aliquam,purus sit amet luctus magna fringilla urna </p>
+            <p class="mx-auto mb-6 mt-4 max-w-lg text-sm text-gray-500 lg:mb-8"> Share Your comments and suggestions </p>
             <!-- Form -->
             <form class="mx-auto mb-4 max-w-sm text-left" name="wf-form-password" method="get">
               <div>
