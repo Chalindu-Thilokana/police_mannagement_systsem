@@ -59,19 +59,25 @@
                     <span>or use your email password</span>
                     <input type="email" placeholder="Email" name="email" required>
                     <input type="password" placeholder="Password" name="password" required>
-                    <a href="#">Forget Your Password?</a>
+                    @if (Route::has('password.request'))
+                    <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('password.request') }}">
+                        {{ __('Forgot your password?') }}
+                    </a>
+                @endif
                     <button type="submit">Sign In</button>
                 </form>
             </div>
             <div class="toggle-container">
                 <div class="toggle">
                     <div class="toggle-panel toggle-left">
-                        <h1>Welcome Back!</h1>
+                        <img src="{{ asset('assets/logo.png') }}" class="h-8 me-2 sm:h-12" alt="Flowbite Logo" />
+                        <h1>register Complaint system police</h1>
                         <p>Enter your personal details to use all of site features</p>
                         <button class="hidden" id="login">Sign In</button>
                     </div>
                     <div class="toggle-panel toggle-right">
-                        <h1>Hello, Friend!</h1>
+                        <img src="{{ asset('assets/logo.png') }}" class="h-8 me-2 sm:h-12" alt="Flowbite Logo" />
+                        <h1>welcome Complaint system police</h1>
                         <p>Register with your personal details to use all of site features</p>
                         <button class="hidden" id="register">Sign Up</button>
                     </div>
