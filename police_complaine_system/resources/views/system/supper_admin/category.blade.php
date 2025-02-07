@@ -77,19 +77,40 @@
               </td>
               <td class="px-8 py-5 text-gray-500 border-b border-gray-400 w-[15%]">
                 <!-- Edit Button -->
-                <button class="bg-green-800 text-white px-3 py-1 rounded-md hover:bg-green-700 inline-flex items-center space-x-1">
-                     <span>Edit</span>
+                <button onclick="openEditModal('{{ $category->id }}', '{{ $category->name }}')"
+                    class="bg-green-800 text-white px-3 py-1 rounded-md hover:bg-green-700 inline-flex items-center space-x-1">
+                    <span>Edit</span>
                 </button>
                 <button onclick="confirmDelete()" class="bg-red-800 text-white px-3 py-1 rounded-md hover:bg-red-700 inline-flex items-center space-x-1 ml-2">
                      <span>Delete</span>
                 </button>
-              </td>
-              
+              </td>   
             </tr>
             @endforeach
-            
           </tbody>
         </table>
+
+        <!-- Popup Background -->
+        <div id="editModal" class="hidden fixed inset-0 bg-gray-900 bg-opacity-50 flex justify-center items-center">
+            <!-- Modal Content -->
+            <div class="bg-white rounded-lg shadow-lg p-6 w-96">
+                <h2 class="text-xl font-bold mb-4">Edit Category</h2>
+                
+                <form id="editForm">
+                    @csrf
+                    <input type="hidden" id="editCategoryId" name="id">
+
+                    <label class="block mb-2 text-gray-700">Category Name</label>
+                    <input type="text" id="editCategoryName" name="name" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+
+                    <div class="mt-4 flex justify-end space-x-2">
+                        <button type="button" onclick="closeEditModal()" class="bg-gray-500 text-white px-4 py-2 rounded-md hover:bg-gray-600">Cancel</button>
+                        <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700">Save</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
         <!-- Pagination -->
         <div class="flex items-center p-5 justify-center min-w-[1000px]">
           <div class="flex border border-gray-400 rounded-md">
@@ -137,6 +158,42 @@
             });
         });
     </script>
+
+    <script>
+        function openEditModal(id, name) {
+            document.getElementById("editCategoryId").value = id;
+            document.getElementById("editCategoryName").value = name;
+            document.getElementById("editModal").classList.remove("hidden");
+        }
+
+        function closeEditModal() {
+            document.getElementById("editModal").classList.add("hidden");
+        }
+
+        document.getElementById("editForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            let formData = new FormData(this);
+
+            fetch("{{ route('categories.update') }}", {
+                method: "POST",
+                body: formData,
+                headers: {
+                    "X-CSRF-TOKEN": "{{ csrf_token() }}"
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                Swal.fire("Updated!", data.success, "success");
+                closeEditModal();
+                location.reload(); // Refresh the page to reflect changes
+            })
+            .catch(error => console.error("Error:", error));
+        });
+    </script>
+
+    <!-- SweetAlert for Success Message -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
  
 @endsection

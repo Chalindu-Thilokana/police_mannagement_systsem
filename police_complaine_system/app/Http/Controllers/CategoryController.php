@@ -61,7 +61,16 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        //
+        $request->validate([
+            'id' => 'required|exists:categories,id',
+            'name' => 'required|string|max:255',
+        ]);
+
+        $category = Category::findOrFail($request->id);
+        $category->name = $request->name;
+        $category->save();
+
+        return response()->json(['success' => 'Category updated successfully!']);
     }
 
     /**
