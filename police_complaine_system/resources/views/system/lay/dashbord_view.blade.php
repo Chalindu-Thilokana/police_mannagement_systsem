@@ -15,6 +15,7 @@
           
           
     </x-slot>
+    @yield('content')
 </x-app-layout>
 
 @endif 
@@ -32,6 +33,7 @@
           
           
     </x-slot>
+    @yield('content')
 </x-app-layout>
 
 @endif 
@@ -50,6 +52,7 @@
           
           
     </x-slot>
+    @yield('content')
 </x-app-layout>
 
 @endif 
@@ -66,6 +69,8 @@
             </h2>
           
     </x-slot>
+
+    @yield('content')
 </x-app-layout>
 
 @endif

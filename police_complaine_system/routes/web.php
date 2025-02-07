@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Gate;
+use App\Http\Controllers\DashbordController;
+use App\Http\Controllers\CategoryController;
 Route::get('/', function () {
     return view('site.web.index');
 });
@@ -15,9 +17,7 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified',
 ])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
+    Route::get('/dashboard', [DashbordController::class, 'index'])->name('dashboard');
 
 
     
@@ -33,25 +33,27 @@ Route::middleware([
     
 
         Route::middleware(['auth:sanctum', 'verified', 'userType:branchAdmin'])->group(function () {
-            Route::get('/dash_new', function () {
-                return view('system.supper_admin.category_create');
-            })->name('dash_new');
+            //only supper admin can access this route
         });
 
 
         Route::middleware(['auth:sanctum', 'verified', 'userType:SuperAdmin'])->group(function () {
           //only supper admin can access this route
-            
-          Route::get('/dash', function () {
-            return view('system.supper_admin.category_create');
-        })->name('dash_new');
+
+          Route::get('/categories', [CategoryController::class, 'index'])->name('categories.index');
+          Route::post('/categories/store', [CategoryController::class, 'store'])->name('category.store');
+
+          
+      
+
+        
 
 
         });
 
 
         Route::middleware(['auth:sanctum', 'verified', 'userType:SubAdmin'])->group(function () {
-            //only supper admin can access this route
+            //only sub admin can access this route
               
             
     
@@ -62,14 +64,14 @@ Route::middleware([
 
         
         Route::middleware(['auth:sanctum', 'verified', 'userType:user'])->group(function () {
-            //only supper admin can access this route
+            //only user admin can access this route
 
 
         });
 
 
         Route::middleware(['auth:sanctum', 'verified', 'userType:branchAdmin,subAdmin'])->group(function () {
-            //only supper admin can access this route
+            //only sub & branch admin can access this route
 
 
         });
