@@ -81,8 +81,9 @@
                     class="bg-green-800 text-white px-3 py-1 rounded-md hover:bg-green-700 inline-flex items-center space-x-1">
                     <span>Edit</span>
                 </button>
-                <button onclick="confirmDelete()" class="bg-red-800 text-white px-3 py-1 rounded-md hover:bg-red-700 inline-flex items-center space-x-1 ml-2">
-                     <span>Delete</span>
+                <button onclick="confirmDelete({{ $category->id }})"
+                    class="bg-red-800 text-white px-3 py-1 rounded-md hover:bg-red-700 inline-flex items-center space-x-1 ml-2">
+                    <span>Delete</span>
                 </button>
               </td>   
             </tr>
@@ -131,7 +132,8 @@
     </div>
   </section>
   
-<script>
+  <!--insert model js-->
+    <script>
         document.addEventListener("DOMContentLoaded", function () {
             const openModalBtn = document.getElementById("openModalBtn");
             const closeModalBtn = document.getElementById("closeModalBtn");
@@ -159,6 +161,7 @@
         });
     </script>
 
+    <!--edit model js-->
     <script>
         function openEditModal(id, name) {
             document.getElementById("editCategoryId").value = id;
@@ -194,6 +197,44 @@
 
     <!-- SweetAlert for Success Message -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!--delete js-->
+    <script>
+        function confirmDelete(id) {
+            Swal.fire({
+                title: "Are you sure?",
+                text: "This action cannot be undone!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#d33",
+                cancelButtonColor: "#3085d6",
+                confirmButtonText: "Yes, delete it!"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    deleteCategory(id);
+                }
+            });
+        }
+    
+        function deleteCategory(id) {
+            fetch(`/categories/${id}`, {
+                method: "DELETE",
+                headers: {
+                    "X-CSRF-TOKEN": "{{ csrf_token() }}"
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                Swal.fire("Deleted!", data.success, "success");
+                document.getElementById("row-" + id).remove(); // Remove row from table
+            })
+            .catch(error => console.error("Error:", error));
+        }
+    </script>
+    
+    <!-- SweetAlert for Confirmation Popup -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
 
  
 @endsection

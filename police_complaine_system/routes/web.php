@@ -43,12 +43,7 @@ Route::middleware([
           Route::get('/categories', [CategoryController::class, 'index'])->name('categories.index');
           Route::post('/categories/store', [CategoryController::class, 'store'])->name('category.store');
           Route::post('/categories/update', [CategoryController::class, 'update'])->name('categories.update');
-
-          
-      
-
-        
-
+          Route::delete('/categories/{id}', [CategoryController::class, 'destroy'])->name('categories.destroy');
 
         });
 
