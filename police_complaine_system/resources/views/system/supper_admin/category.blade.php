@@ -75,7 +75,7 @@
               <td class="px-8 py-5 text-gray-500 border-b border-gray-400 w-[25%]">
                 {{ $category->created_at }}
               </td>
-              <td class="px-8 py-5 text-gray-500 border-b border-gray-400 w-[15%]">
+              <td class="px-8 py-5 text-gray-500 border-b border-gray-400 w-[25%]">
                 <!-- Edit Button -->
                 <button onclick="openEditModal('{{ $category->id }}', '{{ $category->name }}')"
                     class="bg-green-800 text-white px-3 py-1 rounded-md hover:bg-green-700 inline-flex items-center space-x-1">
@@ -106,7 +106,7 @@
 
                     <div class="mt-4 flex justify-end space-x-2">
                         <button type="button" onclick="closeEditModal()" class="bg-gray-500 text-white px-4 py-2 rounded-md hover:bg-gray-600">Cancel</button>
-                        <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700">Save</button>
+                        <button type="submit" class="bg-blue-900 text-white px-4 py-2 rounded-md hover:bg-blue-700">Save</button>
                     </div>
                 </form>
             </div>
@@ -200,37 +200,45 @@
 
     <!--delete js-->
     <script>
-        function confirmDelete(id) {
-            Swal.fire({
-                title: "Are you sure?",
-                text: "This action cannot be undone!",
-                icon: "warning",
-                showCancelButton: true,
-                confirmButtonColor: "#d33",
-                cancelButtonColor: "#3085d6",
-                confirmButtonText: "Yes, delete it!"
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    deleteCategory(id);
-                }
-            });
-        }
-    
-        function deleteCategory(id) {
-            fetch(`/categories/${id}`, {
-                method: "DELETE",
-                headers: {
-                    "X-CSRF-TOKEN": "{{ csrf_token() }}"
-                }
-            })
-            .then(response => response.json())
-            .then(data => {
-                Swal.fire("Deleted!", data.success, "success");
-                document.getElementById("row-" + id).remove(); // Remove row from table
-            })
-            .catch(error => console.error("Error:", error));
-        }
-    </script>
+      function confirmDelete(id) {
+          Swal.fire({
+              title: "Are you sure?",
+              text: "This action cannot be undone!",
+              icon: "warning",
+              showCancelButton: true,
+              confirmButtonColor: "#d33",
+              cancelButtonColor: "#3085d6",
+              confirmButtonText: "Yes, delete it!"
+          }).then((result) => {
+              if (result.isConfirmed) {
+                  deleteCategory(id);
+              }
+          });
+      }
+  
+      function deleteCategory(id) {
+          fetch(`/categories/${id}`, {
+              method: "DELETE",
+              headers: {
+                  "X-CSRF-TOKEN": "{{ csrf_token() }}"
+              }
+          })
+          .then(response => response.json())
+          .then(data => {
+              Swal.fire({
+                  title: "Deleted!",
+                  text: data.success,
+                  icon: "success",
+                  timer: 2000,  // Auto-close after 2 seconds
+                  showConfirmButton: false
+              }).then(() => {
+                  location.reload(); // Refresh page after confirmation
+              });
+          })
+          .catch(error => console.error("Error:", error));
+      }
+  </script>
+  
     
     <!-- SweetAlert for Confirmation Popup -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
