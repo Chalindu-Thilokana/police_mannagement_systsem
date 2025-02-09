@@ -71,8 +71,10 @@
     </x-slot>
 
     @yield('content')
+
+     
+
 </x-app-layout>
 
 @endif
 </div>
-  

@@ -31,15 +31,23 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        Category::create([
-            'name' => $request->name,
-        ]);
-    
-        Alert::success('Success', 'Category added successfully!');
-    
+        try {
+            $validatedData = $request->validate([
+                'name' => 'required|string|max:25|min:3|unique:categories,name',
+            ]); 
+        
+            Category::create([
+                'name' => $validatedData['name'],
+            ]);
+        
+            Alert::success('Success', 'Category added successfully!');
+      
+        } catch (\Exception $e) {
+            Alert::error('Error', 'Something went wrong!');
+           
+        }
         return redirect()->back();
     }
-
     /**
      * Display the specified resource.
      */
@@ -63,7 +71,7 @@ class CategoryController extends Controller
     {
         $request->validate([
             'id' => 'required|exists:categories,id',
-            'name' => 'required|string|max:255',
+            'name' => 'required|string|max:25 |min:3',
         ]);
 
         $category = Category::findOrFail($request->id);

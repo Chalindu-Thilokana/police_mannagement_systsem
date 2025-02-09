@@ -5,9 +5,9 @@
  
 <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
 
-<section>
+<section >
     <div class="flex justify-center items-center min-h-screen p-5">
-      <div class="w-full max-w-7xl border border-gray-400 rounded-lg overflow-x-auto">
+      <div class="w-full max-w-7xl border border-gray-400 rounded-lg overflow-x-auto  bg-white bg-opacity-100">
         <!-- Header -->
         <div class="p-10 min-w-[1000px]">
           <div class="flex justify-between items-center">
@@ -23,29 +23,11 @@
           </div>
         </div>
 
-        <div id="modalOverlay" class="fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center">
-            <!-- Modal Box -->
-            <div class="bg-white p-6 rounded-lg shadow-lg w-96">
-                <div class="flex justify-between items-center border-b pb-2">
-                    <h2 class="text-xl font-bold">Add Crime Category</h2>
-                    <button id="closeModalBtn" class="text-gray-500 hover:text-red-500 text-xl">&times;</button>
-                </div>
-                <form action="{{ route('category.store') }}" method="POST" class="mt-4">
-                    @csrf
-                    <div class="mb-4">
-                        <label for="categoryName" class="block font-semibold">Category Name</label>
-                        <input type="text" name="name" id="categoryName" class="w-full border px-3 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
-                    </div>
-                    <div class="flex justify-end space-x-2">
-                        <button type="button" id="closeModalBtn2" class="bg-gray-500 text-white px-4 py-2 rounded-md">Cancel</button>
-                        <button type="submit" class="bg-blue-900 text-white px-4 py-2 rounded-md">Save</button>
-                    </div>
-                </form>
-            </div>
-        </div>
+        
 
         <!-- Table -->
-        <table class="w-full text-left min-w-[1000px]">
+        <div class="flex justify-center items-center  p-5">
+        <table class="w-full text-left min-w-[1000px] " id="categoryTable">
           <thead>
             <tr>
               <th class="px-8 py-3 border-b border-gray-400 w-[25%]">
@@ -90,7 +72,30 @@
             @endforeach
           </tbody>
         </table>
+        </div>
 
+
+        <div id="modalOverlay" class="fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center">
+          <!-- Modal Box -->
+          <div class="bg-white p-6 rounded-lg shadow-lg w-96">
+              <div class="flex justify-between items-center border-b pb-2">
+                  <h2 class="text-xl font-bold">Add Crime Category</h2>
+                  <button id="closeModalBtn" class="text-gray-500 hover:text-red-500 text-xl">&times;</button>
+              </div>
+              <form action="{{ route('category.store') }}" method="POST" class="mt-4">
+                  @csrf
+                  <div class="mb-4">
+                      <label for="categoryName" class="block font-semibold">Category Name</label>
+                      <input type="text" name="name" id="categoryName" class="w-full border px-3 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                  </div>
+                  <div class="flex justify-end space-x-2">
+                      <button type="button" id="closeModalBtn2" class="bg-gray-500 text-white px-4 py-2 rounded-md">Cancel</button>
+                      <button type="submit" class="bg-blue-900 text-white px-4 py-2 rounded-md">Save</button>
+                  </div>
+              </form>
+          </div>
+      </div>
+    
         <!-- Popup Background -->
         <div id="editModal" class="hidden fixed inset-0 bg-gray-900 bg-opacity-50 flex justify-center items-center">
             <!-- Modal Content -->
@@ -113,23 +118,9 @@
         </div>
 
         <!-- Pagination -->
-        <div class="flex items-center p-5 justify-center min-w-[1000px]">
-          <div class="flex border border-gray-400 rounded-md">
-            <button class="text-black font-bold  px-4 py-2  ">
-              Previous
-            </button>
-            <div class="flex space-x-2">
-              <button class="px-4 py-2 bg-gray-400 text-white">1</button>
-              <button class="px-4 py-2">2</button>
-              <button class="px-4 py-2">3</button>
-              <button class="px-4 py-2">4</button>
-              <button class="px-4 py-2">5</button>
-            </div>
-            <button class=" text-black font-bold px-4 py-2">Next</button>
-          </div>
-        </div>
       </div>
-    </div>
+    </div>  
+
   </section>
   
   <!--insert model js-->
@@ -244,6 +235,10 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     
 
- 
+    <script>  
+      $( document ).ready(function() {
+         new DataTable('#categoryTable');
+      });</script>
+
 @endsection
  
