@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Gate;
 use App\Http\Controllers\DashbordController;
+use App\Http\Controllers\CategoryController;
 Route::get('/', function () {
     return view('site.web.index');
 });
@@ -38,12 +39,11 @@ Route::middleware([
 
         Route::middleware(['auth:sanctum', 'verified', 'userType:SuperAdmin'])->group(function () {
           //only supper admin can access this route
-            
-          
-      
 
-        
-
+          Route::get('/categories', [CategoryController::class, 'index'])->name('categories.index');
+          Route::post('/categories/store', [CategoryController::class, 'store'])->name('category.store');
+          Route::post('/categories/update', [CategoryController::class, 'update'])->name('categories.update');
+          Route::delete('/categories/{id}', [CategoryController::class, 'destroy'])->name('categories.destroy');
 
         });
 
