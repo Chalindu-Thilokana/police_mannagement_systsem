@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class CategoryController extends Controller
 {
@@ -13,7 +14,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        $categories=Category::all();
+        return view('system.supper_admin.category', compact('categories'));
     }
 
     /**
@@ -29,7 +31,13 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Category::create([
+            'name' => $request->name,
+        ]);
+    
+        Alert::success('Success', 'Category added successfully!');
+    
+        return redirect()->back();
     }
 
     /**
@@ -53,14 +61,26 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        //
+        $request->validate([
+            'id' => 'required|exists:categories,id',
+            'name' => 'required|string|max:255',
+        ]);
+
+        $category = Category::findOrFail($request->id);
+        $category->name = $request->name;
+        $category->save();
+
+        return response()->json(['success' => 'Category updated successfully!']);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Category $category)
+    public function destroy($id)
     {
-        //
+        $category = Category::findOrFail($id);
+        $category->delete();
+
+        return response()->json(['success' => 'Category deleted successfully!']);
     }
 }
