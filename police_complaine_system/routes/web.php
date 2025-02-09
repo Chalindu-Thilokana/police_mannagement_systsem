@@ -40,6 +40,7 @@ Route::middleware([
         Route::middleware(['auth:sanctum', 'verified', 'userType:SuperAdmin'])->group(function () {
           //only supper admin can access this route
 
+          //category routes
           Route::get('/categories', [CategoryController::class, 'index'])->name('categories.index');
           Route::post('/categories/store', [CategoryController::class, 'store'])->name('category.store');
           Route::post('/categories/update', [CategoryController::class, 'update'])->name('categories.update');

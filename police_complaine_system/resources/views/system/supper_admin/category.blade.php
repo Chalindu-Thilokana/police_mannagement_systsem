@@ -131,6 +131,19 @@
       </div>
     </div>
   </section>
+
+  @if(session('success'))
+      <script>
+          Swal.fire("Success!", "{{ session('success') }}", "success");
+      </script>
+  @endif
+
+  @if(session('error'))
+      <script>
+          Swal.fire("Error!", "{{ session('error') }}", "error");
+      </script>
+  @endif
+
   
   <!--insert model js-->
     <script>
@@ -242,6 +255,7 @@
     
     <!-- SweetAlert for Confirmation Popup -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
     
 
  

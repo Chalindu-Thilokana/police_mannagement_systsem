@@ -6,6 +6,8 @@ use App\Models\Category;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
+use Illuminate\Database\QueryException;
+use Illuminate\Validation\ValidationException;
 
 class CategoryController extends Controller
 {
@@ -31,12 +33,28 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        Category::create([
-            'name' => $request->name,
-        ]);
-    
-        Alert::success('Success', 'Category added successfully!');
-    
+        try {
+            // Validate request
+            $request->validate([
+                'name' => 'required|unique:categories,name|max:50'
+            ]);
+
+            // Create new category
+            Category::create([
+                'name' => $request->name,
+            ]);
+
+            // Flash success message
+            session()->flash('success', 'Category added successfully!');
+
+        } catch (ValidationException $e) {
+            // Flash validation error messages
+            session()->flash('error', $e->validator->errors()->first());
+        } catch (QueryException $e) {
+            // Handle database errors
+            session()->flash('error', 'Something went wrong! Please try again.');
+        }
+
         return redirect()->back();
     }
 
@@ -60,18 +78,27 @@ class CategoryController extends Controller
      * Update the specified resource in storage.
      */
     public function update(Request $request, Category $category)
-    {
+{
+    try {
+        // Validate request
         $request->validate([
             'id' => 'required|exists:categories,id',
-            'name' => 'required|string|max:255',
+            'name' => 'required|string|max:50|unique:categories,name,' . $request->id,
         ]);
 
+        // Update category
         $category = Category::findOrFail($request->id);
         $category->name = $request->name;
         $category->save();
 
         return response()->json(['success' => 'Category updated successfully!']);
+
+    } catch (ValidationException $e) {
+        return response()->json(['error' => $e->validator->errors()->first()], 422);
+    } catch (QueryException $e) {
+        return response()->json(['error' => 'Something went wrong! Please try again.'], 500);
     }
+}
 
     /**
      * Remove the specified resource from storage.
