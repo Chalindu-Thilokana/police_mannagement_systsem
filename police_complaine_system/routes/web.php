@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Gate;
 use App\Http\Controllers\DashbordController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\UserController;
+
 Route::get('/', function () {
     return view('site.web.index');
 });
@@ -34,6 +36,7 @@ Route::middleware([
 
         Route::middleware(['auth:sanctum', 'verified', 'userType:branchAdmin'])->group(function () {
             //only supper admin can access this route
+            
         });
 
 
@@ -45,6 +48,11 @@ Route::middleware([
           Route::post('/categories/store', [CategoryController::class, 'store'])->name('category.store');
           Route::post('/categories/update', [CategoryController::class, 'update'])->name('categories.update');
           Route::delete('/categories/{id}', [CategoryController::class, 'destroy'])->name('categories.destroy');
+
+          //user routes
+          Route::get('/users', [UserController::class, 'index'])->name('users.index');
+          Route::get('/users/create', [UserController::class, 'create'])->name('users.create');
+          Route::post('/users/store', [UserController::class, 'store'])->name('users.store');
 
         });
 
