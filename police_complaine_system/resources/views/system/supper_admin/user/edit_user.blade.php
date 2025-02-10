@@ -33,17 +33,19 @@
                 @error('old_password') <p class="text-red-500 text-sm mt-1">{{ $message }}</p> @enderror
             </div>
 
-            <div class="mt-8">
-                <label class="block font-semibold text-black">New Password</label>
-                <input type="password" name="new_password"
-                    class="mt-2 block w-full h-12 rounded-md border border-gray-400 shadow-sm sm:text-sm md:text-base pl-3">
-                @error('new_password') <p class="text-red-500 text-sm mt-1">{{ $message }}</p> @enderror
-            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8">
+                <div class="mt-8">
+                    <label class="block font-semibold text-black">New Password</label>
+                    <input type="password" name="new_password"
+                        class="mt-2 block w-full h-12 rounded-md border border-gray-400 shadow-sm sm:text-sm md:text-base pl-3">
+                    @error('new_password') <p class="text-red-500 text-sm mt-1">{{ $message }}</p> @enderror
+                </div>
 
-            <div class="mt-8">
-                <label class="block font-semibold text-black">Confirm New Password</label>
-                <input type="password" name="new_password_confirmation"
-                    class="mt-2 block w-full h-12 rounded-md border border-gray-400 shadow-sm sm:text-sm md:text-base pl-3">
+                <div class="mt-8">
+                    <label class="block font-semibold text-black">Confirm New Password</label>
+                    <input type="password" name="new_password_confirmation"
+                        class="mt-2 block w-full h-12 rounded-md border border-gray-400 shadow-sm sm:text-sm md:text-base pl-3">
+                </div>
             </div>
         
             <div class="mt-8">
