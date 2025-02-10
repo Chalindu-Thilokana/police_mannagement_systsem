@@ -14,17 +14,20 @@ use Illuminate\Validation\Rule;
 
 class UserController extends Controller
 {
+    //view users
     public function index()
     {
         $users=User::all();
         return view('system.supper_admin.user.users', compact('users'));
     }
 
+    //create users form
     public function create()
     {
         return view('system.supper_admin.user.add_user');
     }
 
+    //create user
     public function store(Request $request) 
     {
         try {
@@ -48,12 +51,14 @@ class UserController extends Controller
         }
     }
 
+    //edit user form
     public function edit($id)
     {
         $user = User::findOrFail($id);
         return view('system.supper_admin.user.edit_user', compact('user'));
     }
 
+    //seve edited data
     public function update(Request $request, User $user)
     {
         try {
@@ -87,6 +92,7 @@ class UserController extends Controller
         }
     }
 
+    //delete users
     public function destroy(User $user)
     {
         try {
