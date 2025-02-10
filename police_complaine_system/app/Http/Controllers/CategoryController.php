@@ -34,29 +34,7 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         try {
-<<<<<<< HEAD
-            // Validate request
-            $request->validate([
-                'name' => 'required|unique:categories,name|max:50'
-            ]);
 
-            // Create new category
-            Category::create([
-                'name' => $request->name,
-            ]);
-
-            // Flash success message
-            session()->flash('success', 'Category added successfully!');
-
-        } catch (ValidationException $e) {
-            // Flash validation error messages
-            session()->flash('error', $e->validator->errors()->first());
-        } catch (QueryException $e) {
-            // Handle database errors
-            session()->flash('error', 'Something went wrong! Please try again.');
-        }
-
-=======
             $validatedData = $request->validate([
                 'name' => 'required|string|max:25|min:3|unique:categories,name',
             ]); 
@@ -71,7 +49,7 @@ class CategoryController extends Controller
             Alert::error('Error', 'Something went wrong!');
            
         }
->>>>>>> dba8211f10ae3ebd31b1a07e5d06e0c2436210be
+
         return redirect()->back();
     }
     /**

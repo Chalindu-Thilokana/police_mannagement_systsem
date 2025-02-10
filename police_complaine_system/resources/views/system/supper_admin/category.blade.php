@@ -26,12 +26,10 @@
         
 
         <!-- Table -->
-<<<<<<< HEAD
-        <table class="w-full text-left min-w-[1000px]" id="categoryTable">
-=======
+
         <div class="flex justify-center items-center  p-5">
         <table class="w-full text-left min-w-[1000px] " id="categoryTable">
->>>>>>> dba8211f10ae3ebd31b1a07e5d06e0c2436210be
+
           <thead>
             <tr>
               <th class="px-8 py-3 border-b border-gray-400 w-[25%]">
