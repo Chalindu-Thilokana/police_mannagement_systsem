@@ -14,7 +14,7 @@
             <div>
               <p class="text-lg font-bold mb-5">Users</p>
               <p class="text-gray-500">
-                A list of all Branch admins. You can manage detais of branch admins
+                A list of users. You can manage detais of branch admins
               </p>
             </div>
             <a href="{{ route('users.create') }}" class="bg-blue-900 text-white px-8 py-3 rounded-md">
@@ -27,7 +27,7 @@
             $loggedUser = Auth::user();
         @endphp
         <!-- Table -->
-        <table class="w-full text-left min-w-[1000px]">
+        <table class="w-full text-left min-w-[1000px]" id="userTable">
           <thead>
             <tr>
               <th class="px-8 py-3 border-b border-gray-400 w-[10%]">
@@ -148,6 +148,16 @@
     <!-- SweetAlert for Confirmation Popup -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     
+    <script>  
+      $( document ).ready(function() {
+         new DataTable('#userTable');
+      });</script>
+
+    <script>  
+      $( document ).ready(function() {
+         new DataTable('#userTable');
+      });</script>
+
     
 
  
