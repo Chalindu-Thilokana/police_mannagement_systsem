@@ -66,13 +66,22 @@
                 {{ $user->created_at }}
               </td>
               <td class="px-8 py-5 text-gray-500 border-b border-gray-400 w-[25%]">
-                <!-- Edit Button -->
-                <button class="bg-green-800 text-white px-3 py-1 rounded-md hover:bg-green-700 inline-flex items-center space-x-1">
-                    <span>Edit</span>
-                </button>
-                <button class="bg-red-800 text-white px-3 py-1 rounded-md hover:bg-red-700 inline-flex items-center space-x-1 ml-2">
-                    <span>Delete</span>
-                </button>
+                <a href="{{ route('users.edit', $user->id) }}" 
+                  class="bg-green-800 text-white px-3 py-1 rounded-md hover:bg-green-700 inline-flex items-center space-x-1">
+                   <span>Edit</span>
+               </a>
+           
+               <!-- Delete Button -->
+               <button onclick="confirmDelete({{ $user->id }})" 
+                   class="bg-red-800 text-white px-3 py-1 rounded-md hover:bg-red-700 inline-flex items-center space-x-1">
+                   <span>Delete</span>
+               </button>
+           
+               <!-- Delete Form (Hidden) -->
+               <form id="delete-form-{{ $user->id }}" action="{{ route('users.destroy', $user->id) }}" method="POST" style="display: none;">
+                   @csrf
+                   @method('DELETE')
+               </form>
               </td>   
             </tr>
             @endif
@@ -118,7 +127,7 @@
 
     <!--delete js-->
     <script>
-      function confirmDelete(id) {
+      function confirmDelete(userId) {
           Swal.fire({
               title: "Are you sure?",
               text: "This action cannot be undone!",
@@ -129,31 +138,9 @@
               confirmButtonText: "Yes, delete it!"
           }).then((result) => {
               if (result.isConfirmed) {
-                  deleteCategory(id);
+                  document.getElementById('delete-form-' + userId).submit();
               }
           });
-      }
-  
-      function deleteCategory(id) {
-          fetch(`/categories/${id}`, {
-              method: "DELETE",
-              headers: {
-                  "X-CSRF-TOKEN": "{{ csrf_token() }}"
-              }
-          })
-          .then(response => response.json())
-          .then(data => {
-              Swal.fire({
-                  title: "Deleted!",
-                  text: data.success,
-                  icon: "success",
-                  timer: 2000,  // Auto-close after 2 seconds
-                  showConfirmButton: false
-              }).then(() => {
-                  location.reload(); // Refresh page after confirmation
-              });
-          })
-          .catch(error => console.error("Error:", error));
       }
   </script>
   
