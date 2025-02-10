@@ -45,7 +45,7 @@
         </div>
 
         <!-- Table -->
-        <table class="w-full text-left min-w-[1000px]">
+        <table class="w-full text-left min-w-[1000px]" id="categoryTable">
           <thead>
             <tr>
               <th class="px-8 py-3 border-b border-gray-400 w-[25%]">
@@ -256,7 +256,10 @@
     <!-- SweetAlert for Confirmation Popup -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     
-    
+    <script>  
+      $( document ).ready(function() {
+         new DataTable('#categoryTable');
+      });</script>
 
  
 @endsection
