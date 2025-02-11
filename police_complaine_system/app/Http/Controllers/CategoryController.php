@@ -6,6 +6,8 @@ use App\Models\Category;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
+use Illuminate\Database\QueryException;
+use Illuminate\Validation\ValidationException;
 
 class CategoryController extends Controller
 {
@@ -32,6 +34,7 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         try {
+
             $validatedData = $request->validate([
                 'name' => 'required|string|max:25|min:3|unique:categories,name',
             ]); 
@@ -46,6 +49,7 @@ class CategoryController extends Controller
             Alert::error('Error', 'Something went wrong!');
            
         }
+
         return redirect()->back();
     }
     /**
@@ -69,6 +73,7 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
+        
         $request->validate([
             'id' => 'required|exists:categories,id',
             'name' => 'required|string|max:25 |min:3',

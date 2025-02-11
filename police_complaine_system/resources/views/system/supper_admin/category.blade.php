@@ -26,8 +26,10 @@
         
 
         <!-- Table -->
+
         <div class="flex justify-center items-center  p-5">
         <table class="w-full text-left min-w-[1000px] " id="categoryTable">
+
           <thead>
             <tr>
               <th class="px-8 py-3 border-b border-gray-400 w-[25%]">
@@ -122,6 +124,19 @@
     </div>  
 
   </section>
+
+  @if(session('success'))
+      <script>
+          Swal.fire("Success!", "{{ session('success') }}", "success");
+      </script>
+  @endif
+
+  @if(session('error'))
+      <script>
+          Swal.fire("Error!", "{{ session('error') }}", "error");
+      </script>
+  @endif
+
   
   <!--insert model js-->
     <script>
@@ -234,6 +249,10 @@
     <!-- SweetAlert for Confirmation Popup -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     
+    <script>  
+      $( document ).ready(function() {
+         new DataTable('#categoryTable');
+      });</script>
 
     <script>  
       $( document ).ready(function() {

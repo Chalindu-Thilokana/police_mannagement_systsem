@@ -4,13 +4,26 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Gate;
 use App\Http\Controllers\DashbordController;
 use App\Http\Controllers\CategoryController;
+
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ComplainController;
+=======
 use App\Http\Controllers\BranchController;
 Route::get('/', function () {
     return view('site.web.index');
 });
 
 
+// Route::get('/', function () {
+//     return view('site.web.index');
+// });
 
+//home page
+Route::get('/', [HomeController::class, 'index'])->name('home');
+
+//send message
+Route::post('/message/store', [HomeController::class, 'store'])->name('message');
 
 
 Route::middleware([
@@ -35,21 +48,38 @@ Route::middleware([
 
         Route::middleware(['auth:sanctum', 'verified', 'userType:branchAdmin'])->group(function () {
             //only supper admin can access this route
+            
         });
 
 
         Route::middleware(['auth:sanctum', 'verified', 'userType:SuperAdmin'])->group(function () {
           //only supper admin can access this route
 
+          //category routes
           Route::get('/categories', [CategoryController::class, 'index'])->name('categories.index');
           Route::post('/categories/store', [CategoryController::class, 'store'])->name('category.store');
           Route::post('/categories/update', [CategoryController::class, 'update'])->name('categories.update');
           Route::delete('/categories/{id}', [CategoryController::class, 'destroy'])->name('categories.destroy');
 
+
+          //user routes
+          Route::get('/users', [UserController::class, 'index'])->name('users.index');
+          Route::get('/users/create', [UserController::class, 'create'])->name('users.create');
+          Route::post('/users/store', [UserController::class, 'store'])->name('users.store');
+          Route::get('/users/{id}/edit', [UserController::class, 'edit'])->name('users.edit');
+          Route::put('/users/{user}', [UserController::class, 'update'])->name('users.update');
+          Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('users.destroy');
+
+          //guest messages
+          Route::get('/messages', [HomeController::class, 'admin'])->name('messages.view');
+          Route::delete('/messages/{id}', [HomeController::class, 'destroy'])->name('messages.destroy');
+
+=======
           Route::get('/branches', [BranchController::class, 'index'])->name('Branch.index');
           Route::post('/branches/store', [BranchController::class, 'store'])->name('Branch.store');
           Route::post('/branches/update', [BranchController::class, 'update'])->name('Branch.update');
           Route::delete('/branches/{id}', [BranchController::class, 'destroy'])->name('Branch.destroy');
+
 
         });
 
@@ -67,6 +97,9 @@ Route::middleware([
         
         Route::middleware(['auth:sanctum', 'verified', 'userType:user'])->group(function () {
             //only user admin can access this route
+            Route::get('/complain/create', [ComplainController::class, 'create'])->name('complain');
+            Route::get('/complain/pending', [ComplainController::class, 'pending'])->name('complain.pending');
+            Route::get('/complain/inquaring', [ComplainController::class, 'inquaring'])->name('complain.inquaring');
 
 
         });
