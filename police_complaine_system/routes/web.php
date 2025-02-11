@@ -5,13 +5,17 @@ use Illuminate\Support\Facades\Gate;
 use App\Http\Controllers\DashbordController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\HomeController;
 
-Route::get('/', function () {
-    return view('site.web.index');
-});
+// Route::get('/', function () {
+//     return view('site.web.index');
+// });
 
+//home page
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
-
+//send message
+Route::post('/message/store', [HomeController::class, 'store'])->name('message');
 
 
 Route::middleware([
@@ -56,6 +60,10 @@ Route::middleware([
           Route::get('/users/{id}/edit', [UserController::class, 'edit'])->name('users.edit');
           Route::put('/users/{user}', [UserController::class, 'update'])->name('users.update');
           Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('users.destroy');
+
+          //guest messages
+          Route::get('/messages', [HomeController::class, 'admin'])->name('messages.view');
+          Route::delete('/messages/{id}', [HomeController::class, 'destroy'])->name('messages.destroy');
 
 
         });

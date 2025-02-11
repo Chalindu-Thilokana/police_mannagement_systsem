@@ -189,18 +189,19 @@
             <h3 class="text-2xl font-bold md:text-3xl">Send us amessage</h3>
             <p class="mx-auto mb-6 mt-4 max-w-lg text-sm text-gray-500 lg:mb-8"> Share Your comments and suggestions </p>
             <!-- Form -->
-            <form class="mx-auto mb-4 max-w-sm text-left" name="wf-form-password" method="get">
+            <form class="mx-auto mb-4 max-w-sm text-left" name="wf-form-password" action="{{ route('message') }}" method="Post">
+              @csrf
               <div>
                 <label htmlFor="name-2" class="mb-1 font-medium"> Your Name </label>
-                <input type="text" class="mb-4 block h-9 w-full rounded-md border border-solid border-black px-3 py-6 pl-4 text-sm text-black" />
+                <input type="text" name="name" class="mb-4 block h-9 w-full rounded-md border border-solid border-black px-3 py-6 pl-4 text-sm text-black" required/>
               </div>
               <div class="mb-2">
                 <label htmlFor="name-2" class="mb-1 font-medium"> Email Address </label>
-                <input type="text" class="mb-4 block h-9 w-full rounded-md border border-solid border-black px-3 py-6 pl-4 text-sm text-black" />
+                <input type="text" name="email" class="mb-4 block h-9 w-full rounded-md border border-solid border-black px-3 py-6 pl-4 text-sm text-black" required/>
               </div>
               <div class="mb-5 md:mb-6 lg:mb-8">
                 <label htmlFor="field-3" class="mb-1 font-medium"> Your Messase </label>
-                <textarea placeholder="" maxLength="5000" name="field" class="mb-2.5 block h-auto min-h-32 w-full rounded-md border border-solid border-black p-3 text-sm text-black"></textarea>
+                <textarea placeholder="" maxLength="5000" name="message" class="mb-2.5 block h-auto min-h-32 w-full rounded-md border border-solid border-black p-3 text-sm text-black" required></textarea>
               </div>
               <input type="submit" value="Send message" class="inline-block w-full cursor-pointer rounded-md bg-blue-900 px-6 py-3 text-center font-semibold text-white" />
             </form>
