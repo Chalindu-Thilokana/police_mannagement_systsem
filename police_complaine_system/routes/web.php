@@ -6,6 +6,7 @@ use App\Http\Controllers\DashbordController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ComplainController;
 
 // Route::get('/', function () {
 //     return view('site.web.index');
@@ -82,6 +83,9 @@ Route::middleware([
         
         Route::middleware(['auth:sanctum', 'verified', 'userType:user'])->group(function () {
             //only user admin can access this route
+            Route::get('/complain/create', [ComplainController::class, 'create'])->name('complain');
+            Route::get('/complain/pending', [ComplainController::class, 'pending'])->name('complain.pending');
+            Route::get('/complain/inquaring', [ComplainController::class, 'inquaring'])->name('complain.inquaring');
 
 
         });

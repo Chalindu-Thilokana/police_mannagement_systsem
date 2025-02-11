@@ -87,7 +87,7 @@
             </a>
          </li>
          <li>
-            <a href="#" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+            <a href="{{ route('complain') }}" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                <svg class="shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
                   <path d="M5 5V.13a2.96 2.96 0 0 0-1.293.749L.879 3.707A2.96 2.96 0 0 0 .13 5H5Z"/>
                   <path d="M6.737 11.061a2.961 2.961 0 0 1 .81-1.515l6.117-6.116A4.839 4.839 0 0 1 16 2.141V2a1.97 1.97 0 0 0-1.933-2H7v5a2 2 0 0 1-2 2H0v11a1.969 1.969 0 0 0 1.933 2h12.134A1.97 1.97 0 0 0 16 18v-3.093l-1.546 1.546c-.413.413-.94.695-1.513.81l-3.4.679a2.947 2.947 0 0 1-1.85-.227 2.96 2.96 0 0 1-1.635-3.257l.681-3.397Z"/>
@@ -96,14 +96,41 @@
                <span class="flex-1 ms-3 whitespace-nowrap">New complain</span>
             </a>
          </li>
-          <li>
-             <a href="#" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                <svg class="shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 20">
-                   <path d="M17 5.923A1 1 0 0 0 16 5h-3V4a4 4 0 1 0-8 0v1H2a1 1 0 0 0-1 .923L.086 17.846A2 2 0 0 0 2.08 20h13.84a2 2 0 0 0 1.994-2.153L17 5.923ZM7 9a1 1 0 0 1-2 0V7h2v2Zm0-5a2 2 0 1 1 4 0v1H7V4Zm6 5a1 1 0 1 1-2 0V7h2v2Z"/>
+         <li x-data="{ open: false }">
+            <button @click="open = !open" type="button" 
+                class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">
+                
+                <!--  Icon -->
+                <svg class="shrink-0 w-6 h-6 text-white transition duration-75 group-hover:text-gray-300" 
+                     aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+                     <path d="M16 2h-4l-2-2H8C6.9 0 6 .9 6 2v2H5C3.9 4 3 4.9 3 6v14c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2h-1V2zm-5 0h2v2h-2V2zm6 18H5V6h2v3h10V6h2v14zm-3-5H8v-2h6v2zm0-4H8V9h6v2z"/>
+               </svg>
+        
+                <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">My Complains</span>
+                
+                <!-- Dropdown Arrow -->
+                <svg class="w-3 h-3 transition-transform duration-300" :class="{ 'rotate-180': open }" 
+                    xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
                 </svg>
-                <span class="flex-1 ms-3 whitespace-nowrap">Products</span>
-             </a>
-          </li>
+            </button>
+        
+            <!-- Dropdown Menu -->
+            <ul x-show="open" x-cloak class="py-2 space-y-2">
+                <li>
+                    <a href="{{ route('complain.pending') }}" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">
+                        &nbsp&nbsp&nbsp&nbsp Pending Complains
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('complain.inquaring') }}" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">
+                        &nbsp&nbsp&nbsp&nbsp Inquaring Complains
+                    </a>
+                </li>
+                
+            </ul>
+        </li>
+        
           <li>
              <a href="#" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                 <svg class="shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 16">
