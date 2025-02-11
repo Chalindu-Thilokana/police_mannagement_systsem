@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Gate;
 use App\Http\Controllers\DashbordController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\BranchController;
 Route::get('/', function () {
     return view('site.web.index');
 });
@@ -44,6 +45,11 @@ Route::middleware([
           Route::post('/categories/store', [CategoryController::class, 'store'])->name('category.store');
           Route::post('/categories/update', [CategoryController::class, 'update'])->name('categories.update');
           Route::delete('/categories/{id}', [CategoryController::class, 'destroy'])->name('categories.destroy');
+
+          Route::get('/branches', [BranchController::class, 'index'])->name('Branch.index');
+          Route::post('/branches/store', [BranchController::class, 'store'])->name('Branch.store');
+          Route::post('/branches/update', [BranchController::class, 'update'])->name('Branch.update');
+          Route::delete('/branches/{id}', [BranchController::class, 'destroy'])->name('Branch.destroy');
 
         });
 

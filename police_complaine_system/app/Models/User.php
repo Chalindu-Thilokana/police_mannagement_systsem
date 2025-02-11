@@ -30,6 +30,7 @@ class User extends Authenticatable
         'email',
         'password',
         'userType',
+        'branch_id',
     ];
 
     /**
@@ -65,4 +66,9 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+    public function branch()
+    {
+        return $this->hasMany(Branch::class,'branch_id' );
+    }
+
 }
