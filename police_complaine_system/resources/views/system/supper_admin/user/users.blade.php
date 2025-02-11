@@ -89,22 +89,8 @@
           </tbody>
         </table>
 
-        <!-- Pagination -->
-        <div class="flex items-center p-5 justify-center min-w-[1000px]">
-          <div class="flex border border-gray-400 rounded-md">
-            <button class="text-black font-bold  px-4 py-2  ">
-              Previous
-            </button>
-            <div class="flex space-x-2">
-              <button class="px-4 py-2 bg-gray-400 text-white">1</button>
-              <button class="px-4 py-2">2</button>
-              <button class="px-4 py-2">3</button>
-              <button class="px-4 py-2">4</button>
-              <button class="px-4 py-2">5</button>
-            </div>
-            <button class=" text-black font-bold px-4 py-2">Next</button>
-          </div>
-        </div>
+        
+        
       </div>
     </div>
   </section>

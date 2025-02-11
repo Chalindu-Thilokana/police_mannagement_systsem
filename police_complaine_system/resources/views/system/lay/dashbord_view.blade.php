@@ -58,7 +58,7 @@
 @endif 
 
 
-@if(Auth::user()->userType == 'User')
+@if(Auth::user()->userType == 'user')
 
 <x-app-layout>
    
