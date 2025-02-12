@@ -1,6 +1,6 @@
 @extends('system.lay.dashbord_view')
 @section('content')
-@include('sweetalert::alert')
+
 
 <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
 
@@ -36,7 +36,7 @@
                     <tbody>
                         @foreach($branches as $branch)    
                         <tr>
-                            <td class="px-8 py-5 border-b border-gray-400 w-[25%]">{{ $branch->id }}</td>
+                            <td class="px-8 py-5 border-b border-gray-400 w-[25%]">{{ $loop->iteration }}</td>
                             <td class="px-8 py-5 text-gray-500 border-b border-gray-400 w-[25%]">{{ $branch->branch_name }}</td>
                             <td class="px-8 py-5 text-gray-500 border-b border-gray-400 w-[25%]">{{ $branch->created_at }}</td>
                             <td class="px-8 py-5 text-gray-500 border-b border-gray-400 w-[25%]">

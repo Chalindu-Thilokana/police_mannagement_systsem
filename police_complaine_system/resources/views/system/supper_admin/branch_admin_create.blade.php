@@ -50,6 +50,8 @@
                 </select>
                 @error('role') <p class="text-red-500 text-sm mt-1">{{ $message }}</p> @enderror
             </div>
+
+            <input type="hidden" id="hiddenRole" name="role" value="branchAdmin">
              <br>
             <div class="flex justify-end">
             <a href="{{ route('users.index') }}" class="mr-3 px-5 py-2 border border-gray-400 rounded-md shadow-sm font-semibold text-black bg-white hover:bg-gray-500">

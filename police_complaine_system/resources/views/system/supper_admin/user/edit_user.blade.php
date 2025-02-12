@@ -1,8 +1,8 @@
 @extends('system.lay.dashbord_view')
 @section('content')
 <section>
-    <div class="min-h-screen flex items-center justify-center">
-      <div class="bg-white px-14 py-8 rounded-lg border lg:w-[768px] border-gray-400 max-w-lg lg:max-w-[768px]">
+    <div class="flex justify-center items-center min-h-screen p-5 w-full h-full">
+        <div class="bg-white px-14 py-8 rounded-lg border lg:w-[768px] border-gray-400 max-w-lg lg:max-w-[768px]">
         <h4 class="text-xl md:text-3xl font-bold mb-5 text-center">
           Edit User Details
         </h4>
