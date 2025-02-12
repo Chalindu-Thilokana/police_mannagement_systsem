@@ -34,6 +34,8 @@
   </style>
 </head>
 <body class="bg-gray-100">
+  @include('sweetalert::alert')
+
   <!-- Navbar -->
   <header>
     <nav class="bg-white border-gray-200 px-4 lg:px-6 py-2.5 dark:bg-white-200 fixed top-0 left-0 w-full z-50">
