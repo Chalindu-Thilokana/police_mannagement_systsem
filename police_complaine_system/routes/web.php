@@ -4,9 +4,16 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Gate;
 use App\Http\Controllers\DashbordController;
 use App\Http\Controllers\CategoryController;
+
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ComplainController;
+=======
+use App\Http\Controllers\BranchController;
+Route::get('/', function () {
+    return view('site.web.index');
+});
+
 
 // Route::get('/', function () {
 //     return view('site.web.index');
@@ -54,6 +61,7 @@ Route::middleware([
           Route::post('/categories/update', [CategoryController::class, 'update'])->name('categories.update');
           Route::delete('/categories/{id}', [CategoryController::class, 'destroy'])->name('categories.destroy');
 
+
           //user routes
           Route::get('/users', [UserController::class, 'index'])->name('users.index');
           Route::get('/users/create', [UserController::class, 'create'])->name('users.create');
@@ -65,6 +73,12 @@ Route::middleware([
           //guest messages
           Route::get('/messages', [HomeController::class, 'admin'])->name('messages.view');
           Route::delete('/messages/{id}', [HomeController::class, 'destroy'])->name('messages.destroy');
+
+=======
+          Route::get('/branches', [BranchController::class, 'index'])->name('Branch.index');
+          Route::post('/branches/store', [BranchController::class, 'store'])->name('Branch.store');
+          Route::post('/branches/update', [BranchController::class, 'update'])->name('Branch.update');
+          Route::delete('/branches/{id}', [BranchController::class, 'destroy'])->name('Branch.destroy');
 
 
         });
