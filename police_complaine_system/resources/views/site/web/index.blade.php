@@ -160,7 +160,7 @@
       <div class="px-5 py-16 md:px-10 md:py-20">
         <div class="mx-auto w-full max-w-7xl bg-gray-200 px-4 py-32 text-center">
           <h2 class="mb-4 text-3xl font-bold md:text-5xl max-w-2xl mx-auto text-blue-900"> Swift and Efficient Police Complaint Management Made Easy </h2>
-          <p class="mx-auto mb-6 max-w-xl text-sm text-dark-500 sm:text-base md:mb-12"> Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna </p>
+          <p class="mx-auto mb-6 max-w-xl text-sm text-dark-500 sm:text-base md:mb-12"> An online police complaint management system enables users to file complaints, track statuses, and communicate with authorities securely and efficiently. </p>
         </div>
       </div>
     </section>
@@ -174,7 +174,7 @@
           <div class="max-w-3xl">
             <!-- Title -->
             <h2 class="mb-2 text-3xl font-bold md:text-5xl">Contact Us</h2>
-            <p class="my-4 max-w-lg pb-4 text-sm text-gray-500 sm:text-base md:mb-6 lg:mb-8"> Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus </p>
+            <p class="my-4 max-w-lg pb-4 text-sm text-gray-500 sm:text-base md:mb-6 lg:mb-8">"If you need to contact us in an emergency, please use the following methods." </p>
             <!-- Testimonial -->
             
             <div>
