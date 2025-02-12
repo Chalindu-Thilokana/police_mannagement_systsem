@@ -8,7 +8,6 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ComplainController;
-=======
 use App\Http\Controllers\BranchController;
 Route::get('/', function () {
     return view('site.web.index');
@@ -74,7 +73,7 @@ Route::middleware([
           Route::get('/messages', [HomeController::class, 'admin'])->name('messages.view');
           Route::delete('/messages/{id}', [HomeController::class, 'destroy'])->name('messages.destroy');
 
-=======
+
           Route::get('/branches', [BranchController::class, 'index'])->name('Branch.index');
           Route::post('/branches/store', [BranchController::class, 'store'])->name('Branch.store');
           Route::post('/branches/update', [BranchController::class, 'update'])->name('Branch.update');
