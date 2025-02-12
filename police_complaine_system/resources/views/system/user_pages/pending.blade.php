@@ -10,12 +10,9 @@
             <div>
               <p class="text-lg font-bold mb-5">Pending complains</p>
               <p class="text-gray-500">
-                A list of all the crime categories. You can manage detais of crime category
+                A list of all complains pending.
               </p>
             </div>
-            <button id="openModalBtn" class="bg-blue-900 text-white px-8 py-3 rounded-md">
-                Add Crime Category
-            </button>
           </div>
         </div>
 
@@ -32,10 +29,10 @@
                 No.
               </th>
               <th class="px-8 py-3 border-b border-gray-400 w-[25%]">
-                Crim Category
+                Complain Subject
               </th>
               <th class="px-8 py-3 border-b border-gray-400 w-[25%]">
-                Created At
+                Complain status
               </th>
               <th class="px-8 py-3 border-b border-gray-400 w-[30%]">
                 Action
@@ -58,10 +55,7 @@
               <td class="px-8 py-5 text-gray-500 border-b border-gray-400 w-[25%]">
                 <!-- Edit Button -->
                 <button class="bg-green-800 text-white px-3 py-1 rounded-md hover:bg-green-700 inline-flex items-center space-x-1">
-                    <span>Edit</span>
-                </button>
-                <button class="bg-red-800 text-white px-3 py-1 rounded-md hover:bg-red-700 inline-flex items-center space-x-1 ml-2">
-                    <span>Delete</span>
+                    <span>View Complain</span>
                 </button>
               </td>   
             </tr>
