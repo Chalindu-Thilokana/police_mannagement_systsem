@@ -4,6 +4,7 @@
 <div class="max-w-4xl mx-auto bg-white p-6 mt-10 shadow-md rounded-lg">
     <h2 class="text-xl font-bold text-center text-blue-900 mb-4">File a Complaint (පැමිණිලි කරන්න)</h2>
     <hr>
+    <!--complaining form-->
     <form action="" method="POST" class="space-y-4">
         @csrf
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
