@@ -9,11 +9,11 @@
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
                 <label class="block text-gray-900">NIC Number (ජාතික හැඳුනුම්පත් අංකය)</label>
-                <input type="text" class="w-full p-2 border rounded" required>
+                <input type="text" class="w-full p-2 border rounded" required placeholder="e.g., 65xxxxxxxV or 200xxxxxxxxx">
             </div>
             <div>
                 <label class="block text-gray-900">Nearest Police Station (ළඟම ඇති පොලිස් ස්ථානය)</label>
-                <input type="text" class="w-full p-2 border rounded" required>
+                <input type="text" class="w-full p-2 border rounded" required placeholder="e.g., Gampaha">
             </div>
         </div>
         <div>
@@ -24,19 +24,19 @@
         </div>
         <div>
             <label class="block text-gray-900">Address (ලිපිනය)</label>
-            <textarea class="w-full p-2 border rounded" rows="2" required></textarea>
+            <textarea class="w-full p-2 border rounded" rows="2" required placeholder=" No, Street, City"></textarea>
         </div>       
             <div>
                 <label class="block text-gray-900">Contact Number (ඇමතුම් අංකය)</label>
-                <input type="text" class="w-full p-2 border rounded" required>
+                <input type="text" class="w-full p-2 border rounded" required placeholder="e.g., +94 712345678">
             </div>
         <div>
             <label class="block text-gray-900">Complaint Subject (පැමිණිලි මාතෘකාව)</label>
-            <input type="text" class="w-full p-2 border rounded" required>
+            <input type="text" class="w-full p-2 border rounded" required placeholder="Enter the subject of your complaint (e.g., Robbery)">
         </div>
         <div>
             <label class="block text-gray-900">Complaint (පැමිණිල්ල)</label>
-            <textarea class="w-full p-2 border rounded" rows="4" required></textarea>
+            <textarea class="w-full p-2 border rounded" rows="4" required placeholder="Explain your complaint (Max 50 words)"></textarea>
         </div>
         <div>
             <label class="block text-gray-900">If you have any document or image related to the complaint, Please attach to this complaint. </label>
