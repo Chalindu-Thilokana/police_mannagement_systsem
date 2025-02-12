@@ -60,13 +60,13 @@
             <div id="modalOverlay" class="fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center">
                 <div class="bg-white p-6 rounded-lg shadow-lg w-96">
                     <div class="flex justify-between items-center border-b pb-2">
-                        <h2 class="text-xl font-bold">Add Crime Category</h2>
+                        <h2 class="text-xl font-bold">Add New Branch</h2>
                         <button id="closeModalBtn" class="text-gray-500 hover:text-red-500 text-xl">&times;</button>
                     </div>
                     <form action="{{ route('Branch.store') }}" method="POST" class="mt-4">
                         @csrf
                         <div class="mb-4">
-                            <label for="categoryName" class="block font-semibold">Category Name</label>
+                            <label for="categoryName" class="block font-semibold">Branch Name</label>
                             <input type="text" name="branch_name" id="categoryName" 
                                 class="w-full border px-3 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
                         </div>
@@ -81,11 +81,11 @@
             <!-- Edit Modal -->
             <div id="editModal" class="hidden fixed inset-0 bg-gray-900 bg-opacity-50 flex justify-center items-center">
                 <div class="bg-white rounded-lg shadow-lg p-6 w-96">
-                    <h2 class="text-xl font-bold mb-4">Edit Category</h2>
+                    <h2 class="text-xl font-bold mb-4">Edit Branch</h2>
                     <form id="editFormbranch">
                         @csrf
                         <input type="hidden" id="editBranchId" name="id">
-                        <label class="block mb-2 text-gray-700">Category Name</label>
+                        <label class="block mb-2 text-gray-700">Branch Name</label>
                         <input type="text" id="editBranchName" name="branch_name" 
                             class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
                         <div class="mt-4 flex justify-end space-x-2">

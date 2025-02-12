@@ -43,7 +43,7 @@ class BranchController extends Controller
                 'branch_name' => $validatedData['branch_name'],
             ]);
         
-            Alert::success('Success', 'Category added successfully!');
+            Alert::success('Success', 'Branch added successfully!');
       
         } catch (\Exception $e) {
             Alert::error('Error', 'Something went wrong!');
@@ -86,7 +86,7 @@ class BranchController extends Controller
         $branch->branch_name = $request->branch_name;
         $branch->save();
 
-        return response()->json(['success' => 'Category updated successfully!']);
+        return response()->json(['success' => 'Branch updated successfully!']);
     }
 
     /**
@@ -102,7 +102,7 @@ class BranchController extends Controller
         $branch = Branch::findOrFail($id);
         $branch->delete();
 
-        return response()->json(['success' => 'Category deleted successfully!']);
+        return response()->json(['success' => 'Branch deleted successfully!']);
     
 
        } catch (\Exception $e) {

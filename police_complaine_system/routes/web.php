@@ -4,7 +4,6 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Gate;
 use App\Http\Controllers\DashbordController;
 use App\Http\Controllers\CategoryController;
-
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ComplainController;
