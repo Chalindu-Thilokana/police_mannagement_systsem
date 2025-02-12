@@ -16,14 +16,14 @@
             <div class="mt-8">
                 <label class="block font-semibold text-black">User Name</label>
                 <input type="text" name="name" value="{{ old('name') }}" 
-                    class="mt-2 block w-full h-12 rounded-md border border-gray-400 shadow-sm sm:text-sm md:text-base pl-3">
+                    class="mt-2 block w-full h-12 rounded-md border border-gray-400 shadow-sm sm:text-sm md:text-base pl-3" required>
                 @error('name') <p class="text-red-500 text-sm mt-1">{{ $message }}</p> @enderror
             </div>
         
             <div class="mt-8">
                 <label class="block font-semibold text-black">User E-mail</label>
                 <input type="email" name="email" value="{{ old('email') }}" 
-                    class="mt-2 block w-full h-12 rounded-md border border-gray-400 shadow-sm sm:text-sm md:text-base pl-3">
+                    class="mt-2 block w-full h-12 rounded-md border border-gray-400 shadow-sm sm:text-sm md:text-base pl-3" required>
                 @error('email') <p class="text-red-500 text-sm mt-1">{{ $message }}</p> @enderror
             </div>
         
@@ -31,13 +31,13 @@
                 <div>
                     <label class="block font-semibold text-black">Password</label>
                     <input type="password" name="password" 
-                        class="mt-2 block w-full h-12 rounded-md border border-gray-400 shadow-sm sm:text-sm md:text-base pl-3">
+                        class="mt-2 block w-full h-12 rounded-md border border-gray-400 shadow-sm sm:text-sm md:text-base pl-3" required>
                     @error('password') <p class="text-red-500 text-sm mt-1">{{ $message }}</p> @enderror
                 </div>
                 <div>
                     <label class="block font-semibold text-black">Confirm Password</label>
                     <input type="password" name="password_confirmation" 
-                        class="mt-2 block w-full h-12 rounded-md border border-gray-400 shadow-sm sm:text-sm md:text-base pl-3">
+                        class="mt-2 block w-full h-12 rounded-md border border-gray-400 shadow-sm sm:text-sm md:text-base pl-3" required>
                 </div>
             </div>
 
