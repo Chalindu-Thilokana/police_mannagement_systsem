@@ -4,9 +4,20 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Gate;
 use App\Http\Controllers\DashbordController;
 use App\Http\Controllers\CategoryController;
+<<<<<<< HEAD
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ComplainController;
+=======
+
+
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ComplainController;
+
+
+
+>>>>>>> 33e10d8b628adfe54a8abedf61c9bfd0d1452d0c
 use App\Http\Controllers\BranchController;
 Route::get('/', function () {
     return view('site.web.index');
@@ -46,6 +57,13 @@ Route::middleware([
 
         Route::middleware(['auth:sanctum', 'verified', 'userType:branchAdmin'])->group(function () {
             //only supper admin can access this route
+
+            Route::get('/users', [UserController::class, 'index'])->name('users.index');
+            Route::get('/users/create', [UserController::class, 'create'])->name('users.create');
+            Route::post('/users/store', [UserController::class, 'store'])->name('users.store');
+            Route::get('/users/{id}/edit', [UserController::class, 'edit'])->name('users.edit');
+            Route::put('/users/{user}', [UserController::class, 'update'])->name('users.update');
+            Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('users.destroy');
             
         });
 
@@ -60,19 +78,20 @@ Route::middleware([
           Route::delete('/categories/{id}', [CategoryController::class, 'destroy'])->name('categories.destroy');
 
 
+
           //user routes
-          Route::get('/users', [UserController::class, 'index'])->name('users.index');
-          Route::get('/users/create', [UserController::class, 'create'])->name('users.create');
-          Route::post('/users/store', [UserController::class, 'store'])->name('users.store');
-          Route::get('/users/{id}/edit', [UserController::class, 'edit'])->name('users.edit');
-          Route::put('/users/{user}', [UserController::class, 'update'])->name('users.update');
-          Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('users.destroy');
+       
 
           //guest messages
           Route::get('/messages', [HomeController::class, 'admin'])->name('messages.view');
           Route::delete('/messages/{id}', [HomeController::class, 'destroy'])->name('messages.destroy');
 
 
+<<<<<<< HEAD
+=======
+          //branch routes
+
+>>>>>>> 33e10d8b628adfe54a8abedf61c9bfd0d1452d0c
           Route::get('/branches', [BranchController::class, 'index'])->name('Branch.index');
           Route::post('/branches/store', [BranchController::class, 'store'])->name('Branch.store');
           Route::post('/branches/update', [BranchController::class, 'update'])->name('Branch.update');
@@ -84,8 +103,8 @@ Route::middleware([
 
         Route::middleware(['auth:sanctum', 'verified', 'userType:SubAdmin'])->group(function () {
             //only sub admin can access this route
-              
-            
+              //sub admins
+           
     
   
   
@@ -96,15 +115,16 @@ Route::middleware([
         Route::middleware(['auth:sanctum', 'verified', 'userType:user'])->group(function () {
             //only user admin can access this route
             Route::get('/complain/create', [ComplainController::class, 'create'])->name('complain');
-            Route::get('/complain/pending', [ComplainController::class, 'pending'])->name('complain.pending');
-            Route::get('/complain/inquaring', [ComplainController::class, 'inquaring'])->name('complain.inquaring');
-
+          
 
         });
 
 
-        Route::middleware(['auth:sanctum', 'verified', 'userType:branchAdmin,subAdmin'])->group(function () {
+        Route::middleware(['auth:sanctum', 'verified', 'userType:branchAdmin,subAdmin,SuperAdmin,user'])->group(function () {
             //only sub & branch admin can access this route
+            Route::get('/complain/pending', [ComplainController::class, 'pending'])->name('complain.pending');
+            Route::get('/complain/inquaring', [ComplainController::class, 'inquaring'])->name('complain.inquaring');
+
 
 
         });

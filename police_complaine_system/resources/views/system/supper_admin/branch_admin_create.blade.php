@@ -16,14 +16,14 @@
             <div class="mt-8">
                 <label class="block font-semibold text-black">User Name</label>
                 <input type="text" name="name" value="{{ old('name') }}" 
-                    class="mt-2 block w-full h-12 rounded-md border border-gray-400 shadow-sm sm:text-sm md:text-base pl-3" required>
+                    class="mt-2 block w-full h-12 rounded-md border border-gray-400 shadow-sm sm:text-sm md:text-base pl-3">
                 @error('name') <p class="text-red-500 text-sm mt-1">{{ $message }}</p> @enderror
             </div>
         
             <div class="mt-8">
                 <label class="block font-semibold text-black">User E-mail</label>
                 <input type="email" name="email" value="{{ old('email') }}" 
-                    class="mt-2 block w-full h-12 rounded-md border border-gray-400 shadow-sm sm:text-sm md:text-base pl-3" required>
+                    class="mt-2 block w-full h-12 rounded-md border border-gray-400 shadow-sm sm:text-sm md:text-base pl-3">
                 @error('email') <p class="text-red-500 text-sm mt-1">{{ $message }}</p> @enderror
             </div>
         
@@ -31,13 +31,13 @@
                 <div>
                     <label class="block font-semibold text-black">Password</label>
                     <input type="password" name="password" 
-                        class="mt-2 block w-full h-12 rounded-md border border-gray-400 shadow-sm sm:text-sm md:text-base pl-3" required>
+                        class="mt-2 block w-full h-12 rounded-md border border-gray-400 shadow-sm sm:text-sm md:text-base pl-3">
                     @error('password') <p class="text-red-500 text-sm mt-1">{{ $message }}</p> @enderror
                 </div>
                 <div>
                     <label class="block font-semibold text-black">Confirm Password</label>
                     <input type="password" name="password_confirmation" 
-                        class="mt-2 block w-full h-12 rounded-md border border-gray-400 shadow-sm sm:text-sm md:text-base pl-3" required>
+                        class="mt-2 block w-full h-12 rounded-md border border-gray-400 shadow-sm sm:text-sm md:text-base pl-3">
                 </div>
             </div>
 
@@ -50,6 +50,8 @@
                 </select>
                 @error('role') <p class="text-red-500 text-sm mt-1">{{ $message }}</p> @enderror
             </div>
+
+            <input type="hidden" id="hiddenRole" name="role" value="branchAdmin">
              <br>
             <div class="flex justify-end">
             <a href="{{ route('users.index') }}" class="mr-3 px-5 py-2 border border-gray-400 rounded-md shadow-sm font-semibold text-black bg-white hover:bg-gray-500">

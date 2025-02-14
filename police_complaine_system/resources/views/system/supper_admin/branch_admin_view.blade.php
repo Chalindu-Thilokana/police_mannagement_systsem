@@ -1,8 +1,7 @@
 
 @extends('system.lay.dashbord_view')
 @section('content')
-@include('sweetalert::alert')
- 
+
 <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
 
 <section>
@@ -12,9 +11,9 @@
         <div class="p-10 min-w-[1000px]">
           <div class="flex justify-between items-center">
             <div>
-              <p class="text-lg font-bold mb-5">Users</p>
+              <p class="text-lg font-bold mb-5">branch admin create </p>
               <p class="text-gray-500">
-                A list of users. You can manage detais of branch admins
+                A list of branch admin. You can manage detais of branch admins
               </p>
             </div>
             <a href="{{ route('users.create') }}" class="bg-blue-900 text-white px-8 py-3 rounded-md">
@@ -25,7 +24,7 @@
         
         <div class="flex justify-center items-center p-5">
         <!-- Table -->
-        <table class="w-full text-left min-w-[1000px]" id="userTable">
+        <table class="w-full text-left min-w-[1000px]" id="branchadminTable">
           <thead>
             <tr>
               <th class="px-8 py-3 border-b border-gray-400 w-[10%]">
@@ -134,7 +133,7 @@
     
     <script>  
       $( document ).ready(function() {
-         new DataTable('#userTable');
+         new DataTable('#branchadminTable');
       });</script>
 
     
