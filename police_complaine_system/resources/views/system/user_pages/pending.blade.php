@@ -62,6 +62,7 @@
               </th>
               @endif
               @if(in_array(Auth::user()->userType, ['subAdmin', 'branchAdmin', 'user']))
+              @if(in_array(Auth::user()->userType, ['SubAdmin', 'branchAdmin', 'user','SuperAdmin']))
               <th class="px-8 py-3 border-b border-gray-400 w-[30%]">
                  sub admin Action
              </th>
@@ -114,6 +115,7 @@
 
 
               @if(in_array(Auth::user()->userType, ['subAdmin', 'branchAdmin', 'user']))
+              @if(in_array(Auth::user()->userType, ['SuperAdmin', 'branchAdmin', 'user','SubAdmin',]))
               <td class="px-8 py-5 text-gray-500 border-b border-gray-400 w-[25%]">
               <a href="{{ route('complain.inquaring') }}" class="bg-yellow-800 text-white px-3 py-1 rounded-md hover:bg-yellow-700 inline-flex items-center space-x-1">
                 <span>view </span>
