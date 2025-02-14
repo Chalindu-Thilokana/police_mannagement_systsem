@@ -108,15 +108,15 @@
           <div class="flex justify-between items-center ">
           <!-- Details -->
           <div class="mt-4 space-y-3 text-gray-800">
-              <p><span class="font-semibold">Name:</span> John Doe</p>
-              <p><span class="font-semibold">Branch:</span> Colombo HQ</p>
-              <p><span class="font-semibold">Created Date:</span> 2025-02-14</p>
-              <p><span class="font-semibold">Updated Date:</span> 2025-02-15</p>
-              <p><span class="font-semibold">Status:</span> <span class="text-green-600 font-bold">Approved</span></p>
+              <p><span class="font-semibold">Name:</span> {{ $complain->user->name }}</p>
+              <p><span class="font-semibold">Branch:</span> {{ $complain->branch->branc_name }}</p>
+              <p><span class="font-semibold">Created Date:</span> {{ $complain->created_at }}</p>
+              <p><span class="font-semibold">Updated Date:</span> {{ $complain->updated_at }}</p>
+              <p><span class="font-semibold">Status:</span> <span class="text-green-600 font-bold">{{ $complain->status }}</span></p>
               <p><span class="font-semibold">Address:</span> 123, Galle Road, Colombo</p>
-              <p><span class="font-semibold">Phone:</span> 011-2345678</p>
-              <p><span class="font-semibold">Email:</span> john.doe@police.lk</p>
-              <p><span class="font-semibold">Description:</span> Complaint regarding illegal activity reported in Colombo district.</p>
+              <p><span class="font-semibold">Phone:</span> {{ $complain->phone }}</p>
+              <p><span class="font-semibold">Email:</span> {{ $complain->user->email }}</p>
+              <p><span class="font-semibold">Description:</span> {{ $complain->details }}</p>
           
           
             </div>

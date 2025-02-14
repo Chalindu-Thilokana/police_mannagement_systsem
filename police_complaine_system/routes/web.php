@@ -112,7 +112,9 @@ Route::middleware([
         Route::middleware(['auth:sanctum', 'verified', 'userType:user'])->group(function () {
             //only user admin can access this route
             Route::get('/complain/create', [ComplainController::class, 'create'])->name('complain');
-            Route::get('/complain/store', [ComplainController::class, 'create'])->name('complain.store');
+
+            //rourte(isuru)
+            Route::post('/complain/store', [ComplainController::class, 'store'])->name('complain.store');
           
 
         });
@@ -121,7 +123,8 @@ Route::middleware([
         Route::middleware(['auth:sanctum', 'verified', 'userType:branchAdmin,subAdmin,SuperAdmin,user'])->group(function () {
             //only sub & branch admin can access this route
             Route::get('/complain/pending', [ComplainController::class, 'pending'])->name('complain.pending');
-            Route::get('/complain/inquaring', [ComplainController::class, 'inquaring'])->name('complain.inquaring');
+            Route::get('/complain/{id}', [ComplainController::class, 'inquaring'])->name('complain.show');
+
 
 
 
