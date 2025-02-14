@@ -58,15 +58,15 @@ class ComplainController extends Controller
                 'branch_id' => 'required|exists:branches,id',
                 'category_id' => 'required|exists:categories,id',
                 'user_id' => 'required|exists:users,id',
+                'file' => 'nullable|mimes:jpg,png,pdf|max:1024', 
             ]);
         
             // Store files (if any)
-            $filePaths = [];
+            $filePath = null;
             if ($request->hasFile('file')) {
-                foreach ($request->file('file') as $file) {
-                    // Store the file in 'public/complain' folder
-                    $filePaths[] = $file->store('complain', 'public');
-                }
+                $file = $request->file('file');
+                // Store the file in the 'public/complain' folder
+                $filePath = $file->store('complain', 'public'); // Store in the public disk
             }
         
             // Create a new complain record
@@ -79,7 +79,7 @@ class ComplainController extends Controller
                 'branch_id' => $validated['branch_id'],
                 'category_id' => $validated['category_id'],
                 'user_id' => $validated['user_id'],
-                'file' => json_encode($filePaths), // Store file paths as JSON
+                'file' => $filePath ? $filePath : null, // Store file paths as JSON
             ]);
         
             Alert::success('Success', 'Complain added successfully!');

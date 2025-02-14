@@ -113,17 +113,45 @@
               <p><span class="font-semibold">Created Date:</span> {{ $complain->created_at }}</p>
               <p><span class="font-semibold">Updated Date:</span> {{ $complain->updated_at }}</p>
               <p><span class="font-semibold">Status:</span> <span class="text-green-600 font-bold">{{ $complain->status }}</span></p>
-              <p><span class="font-semibold">Address:</span> 123, Galle Road, Colombo</p>
+              <p><span class="font-semibold">Address:</span> {{ $complain->address }}</p>
               <p><span class="font-semibold">Phone:</span> {{ $complain->phone }}</p>
               <p><span class="font-semibold">Email:</span> {{ $complain->user->email }}</p>
               <p><span class="font-semibold">Description:</span> {{ $complain->details }}</p>
+              <p><span class="font-semibold">Description:</span> {{ $complain->file }}</p>
           
-          
-            </div>
-      
+              @php
+    // Prepend 'storage/' to the file path stored in the database
+    $filePath = 'storage/' . $complain->file;  // The file path stored in the database
+    // Default fallback image path
+    $defaultImage = 'storage/complain/default-image.jpg';
 
-     
-      
+    // Extract the file extension to determine the type
+    $fileExtension = pathinfo($complain->file, PATHINFO_EXTENSION);
+@endphp
+
+<div class="mt-4">
+    <h3 class="text-lg font-semibold">Attached File:</h3>
+
+    <!-- Check file extension to decide how to display the file -->
+    @if(in_array($fileExtension, ['jpg', 'jpeg', 'png', 'gif', 'webp']))
+        <!-- Display Image -->
+        <img src="{{ asset($filePath) }}" alt="Complain Attachment" class="mt-2 w-64 h-auto rounded shadow-lg">
+    @elseif($fileExtension === 'pdf')
+        <!-- Display PDF -->
+        <iframe src="{{ asset($filePath) }}" width="100%" height="500px"></iframe>
+        <a href="{{ asset($filePath) }}" target="_blank" class="text-blue-600 hover:underline mt-2 block">Open PDF in new tab</a>
+    @else
+        <!-- Fallback option for other file types (e.g., downloadable link) -->
+        <a href="{{ asset($filePath) }}" download class="bg-blue-800 text-white px-3 py-1 rounded-md hover:bg-blue-700 inline-flex items-center space-x-1">
+            <span>Download File</span>
+        </a>
+    @endif
+</div>
+
+
+
+
+            </div>
         </div>
 
                   <!-- Actions -->
