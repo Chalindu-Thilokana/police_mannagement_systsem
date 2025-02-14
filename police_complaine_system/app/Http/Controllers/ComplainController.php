@@ -51,6 +51,7 @@ class ComplainController extends Controller
             $validated = $request->validate([
                 'nic' => 'required|string|max:20',
                 'phone' => 'required|string|max:15',
+                'address' => 'required|string|max:100',
                 'topic' => 'required|string|max:255',
                 'details' => 'required|string|max:500',
                 'file.*' => 'nullable|mimes:jpg,png,pdf|max:1024',
@@ -72,6 +73,7 @@ class ComplainController extends Controller
             $complain = Complain::create([
                 'nic' => $validated['nic'],
                 'phone' => $validated['phone'],
+                'address' => $validated['address'],
                 'topic' => $validated['topic'],
                 'details' => $validated['details'],
                 'branch_id' => $validated['branch_id'],

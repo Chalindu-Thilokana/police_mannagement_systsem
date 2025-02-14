@@ -95,13 +95,13 @@
                 {{ $complain->created_at }}
               </td>
               <td class="px-8 py-5 text-gray-500 border-b border-gray-400 w-[25%]">
-                @if($complain->file && Str::endsWith($complain->file, '.pdf')) 
+                 
                     <a href="{{ asset('complain/' . $complain->file) }}" target="_blank">
                         <button class="bg-blue-800 text-white px-3 py-1 rounded-md hover:bg-blue-700 inline-flex items-center space-x-1 ml-2">
                             <span>PDF</span>
                         </button>
                     </a>
-                @endif
+                
             </td>
               @if(Auth::user()->userType == 'branchAdmin')  
               <td class="px-8 py-5 text-gray-500 border-b border-gray-400 w-[25%]">
