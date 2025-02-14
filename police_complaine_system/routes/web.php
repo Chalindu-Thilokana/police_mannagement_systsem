@@ -5,9 +5,12 @@ use Illuminate\Support\Facades\Gate;
 use App\Http\Controllers\DashbordController;
 use App\Http\Controllers\CategoryController;
 
+
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ComplainController;
+
+
 
 use App\Http\Controllers\BranchController;
 Route::get('/', function () {
@@ -69,6 +72,7 @@ Route::middleware([
           Route::delete('/categories/{id}', [CategoryController::class, 'destroy'])->name('categories.destroy');
 
 
+
           //user routes
        
 
@@ -78,6 +82,7 @@ Route::middleware([
 
 
           //branch routes
+
           Route::get('/branches', [BranchController::class, 'index'])->name('Branch.index');
           Route::post('/branches/store', [BranchController::class, 'store'])->name('Branch.store');
           Route::post('/branches/update', [BranchController::class, 'update'])->name('Branch.update');
