@@ -88,7 +88,13 @@ Route::middleware([
           Route::post('/branches/update', [BranchController::class, 'update'])->name('Branch.update');
           Route::delete('/branches/{id}', [BranchController::class, 'destroy'])->name('Branch.destroy');
 
-
+            //branch admin routes
+            Route::get('/branchadmin', [BranchController::class, 'create'])->name('branchadmin');
+            Route::get('/branchadmin/create', [BranchController::class, 'show'])->name('branchadmin.create');
+            Route::post('/branchadmin/store', [BranchController::class, 'save'])->name('branchadmin.store');
+            Route::get('/branchadmin/{id}/edit', [BranchController::class, 'edit'])->name('branchadmin.edit');
+            Route::put('/branchadmin/update/{id}', [BranchController::class, 'change'])->name('branchadmin.update');
+            Route::delete('/branchadmin/delete/{id}', [BranchController::class, 'delete'])->name('branchadmin.destroy');
         });
 
 
@@ -106,6 +112,7 @@ Route::middleware([
         Route::middleware(['auth:sanctum', 'verified', 'userType:user'])->group(function () {
             //only user admin can access this route
             Route::get('/complain/create', [ComplainController::class, 'create'])->name('complain');
+            Route::get('/complain/store', [ComplainController::class, 'create'])->name('complain.store');
           
 
         });

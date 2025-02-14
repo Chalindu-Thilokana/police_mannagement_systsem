@@ -15,7 +15,11 @@ class Branch extends Model
 
     public function user()
     {
-        return $this->belongsTo(User::class,'branch_id');
+        return $this->hasMany(User::class,'branch_id');
+    }
+    public function complain()
+    {
+        return $this->hasMany(Branch::class,'branch_id' );
     }
 
 }

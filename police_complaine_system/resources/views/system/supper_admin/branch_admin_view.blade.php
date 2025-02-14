@@ -16,7 +16,7 @@
                 A list of branch admin. You can manage detais of branch admins
               </p>
             </div>
-            <a href="{{ route('users.create') }}" class="bg-blue-900 text-white px-8 py-3 rounded-md">
+            <a href="{{ route('branchadmin.create') }}" class="bg-blue-900 text-white px-8 py-3 rounded-md">
                 Add User
             </a>
           </div>
@@ -37,7 +37,7 @@
                 User E-mail
               </th>
               <th class="px-8 py-3 border-b border-gray-400 w-[15%]">
-                Created At
+                branch name
               </th>
               <th class="px-8 py-3 border-b border-gray-400 w-[25%]">
                 Action
@@ -46,35 +46,35 @@
             </tr>
           </thead>
           <tbody>
-            @foreach( $users as $user )
+            @foreach( $branchAdmins as $branchAdmin )
            
             <tr>
               <td class="px-8 py-5 border-b border-gray-400 w-[10%]">
                 {{ $loop->iteration }}
               </td>
               <td class="px-8 py-5 text-gray-500 border-b border-gray-400 w-[25%]">
-                {{ $user->name }}
+                {{ $branchAdmin->name }}
               </td>
               <td class="px-8 py-5 text-gray-500 border-b border-gray-400 w-[25%]">
-                {{ $user->email }}
+                {{ $branchAdmin->email }}
               </td>
               <td class="px-8 py-5 text-gray-500 border-b border-gray-400 w-[15%]">
-                {{ $user->created_at }}
+                {{ $branchAdmin->branch ? $branchAdmin->branch->branch_name : 'No Branch Assigned' }}
               </td>
               <td class="px-8 py-5 text-gray-500 border-b border-gray-400 w-[25%]">
-                <a href="{{ route('users.edit', $user->id) }}" 
+                <a href="{{ route('branchadmin.edit', $branchAdmin->id) }}" 
                   class="bg-green-800 text-white px-3 py-1 rounded-md hover:bg-green-700 inline-flex items-center space-x-1">
                    <span>Edit</span>
                </a>
            
                <!-- Delete Button -->
-               <button onclick="confirmDelete({{ $user->id }})" 
+               <button onclick="confirmDelete({{ $branchAdmin->id }})" 
                    class="bg-red-800 text-white px-3 py-1 rounded-md hover:bg-red-700 inline-flex items-center space-x-1">
                    <span>Delete</span>
                </button>
            
                <!-- Delete Form (Hidden) -->
-               <form id="delete-form-{{ $user->id }}" action="{{ route('users.destroy', $user->id) }}" method="POST" style="display: none;">
+               <form id="delete-form-{{ $branchAdmin->id }}" action="{{ route('branchadmin.destroy', $branchAdmin->id) }}" method="POST" style="display: none;">
                    @csrf
                    @method('DELETE')
                </form>

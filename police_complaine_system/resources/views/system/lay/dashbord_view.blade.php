@@ -28,7 +28,11 @@
     <x-slot name="header">
        
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                {{ __('branch dashboard') }}
+               
+                {{ Auth::user()->branch->branch_name }} 
+                {{ __(' branch dashboard') }} 
+
+               
             </h2>
           
           
@@ -47,6 +51,7 @@
     <x-slot name="header">
        
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+                {{ Auth::user()->branch->branch_name }} 
                 {{ __('Sub Admin dashboard') }}
             </h2>
           

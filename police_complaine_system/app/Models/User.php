@@ -68,7 +68,17 @@ class User extends Authenticatable
     }
     public function branch()
     {
-        return $this->hasMany(Branch::class,'branch_id' );
+        return $this->belongsTo(Branch::class,'branch_id' );
     }
 
+
+    public function complain()
+    {
+        return $this->hasMany(Complain::class,'user_id');
+    }
+
+    public function complain_admin()
+    {
+        return $this->hasMany(Complain::class,'admin_id');
+    }
 }

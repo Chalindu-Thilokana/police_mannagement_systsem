@@ -13,9 +13,11 @@
                 A list of all the crime categories. You can manage detais of crime category
               </p>
             </div>
-            <button id="openModalBtn" class="bg-blue-900 text-white px-8 py-3 rounded-md">
+            @if(Auth::user()->userType == 'user')  
+            <a href="{{ route('complain') }}" id="openModalBtn" class="bg-blue-900 text-white px-8 py-3 rounded-md">
                 Add Crime Category
-            </button>
+            </a>
+            @endif
           </div>
         </div>
 
@@ -23,7 +25,7 @@
 
         <!-- Table -->
 
-        <div class="flex justify-center items-center  p-5">
+        <div class="flex  items-center   p-5">{{-- justify-center --- me class eka ahak kala--}}
         <table class="w-full text-left min-w-[1000px] " id="inquaringTable">
 
           <thead>
@@ -32,15 +34,38 @@
                 No.
               </th>
               <th class="px-8 py-3 border-b border-gray-400 w-[25%]">
+                name
+              </th>
+              <th class="px-8 py-3 border-b border-gray-400 w-[25%]">
                 Crim Category
+              </th>
+              <th class="px-8 py-3 border-b border-gray-400 w-[25%]">
+                address 
+              </th>
+              <th class="px-8 py-3 border-b border-gray-400 w-[25%]">
+                status  
+              </th>
+              
+              <th class="px-8 py-3 border-b border-gray-400 w-[25%]">
+                topic
               </th>
               <th class="px-8 py-3 border-b border-gray-400 w-[25%]">
                 Created At
               </th>
-              <th class="px-8 py-3 border-b border-gray-400 w-[30%]">
-                Action
+              <th class="px-8 py-3 border-b border-gray-400 w-[25%]">
+                pdf
               </th>
-              
+              @if(Auth::user()->userType == 'branchAdmin')  
+
+              <th class="px-8 py-3 border-b border-gray-400 w-[30%]">
+                  admin Action
+              </th>
+              @endif
+              @if(in_array(Auth::user()->userType, ['subAdmin', 'branchAdmin', 'user']))
+              <th class="px-8 py-3 border-b border-gray-400 w-[30%]">
+                 sub admin Action
+             </th>
+              @endif
             </tr>
           </thead>
           <tbody>
@@ -56,14 +81,46 @@
                 
               </td>
               <td class="px-8 py-5 text-gray-500 border-b border-gray-400 w-[25%]">
+                
+              </td>
+              <td class="px-8 py-5 text-gray-500 border-b border-gray-400 w-[25%]">
+                
+              </td>
+              <td class="px-8 py-5 text-gray-500 border-b border-gray-400 w-[25%]">
+                
+              </td>
+              <td class="px-8 py-5 text-gray-500 border-b border-gray-400 w-[25%]">
+                
+              </td>
+              <td class="px-8 py-5 text-gray-500 border-b border-gray-400 w-[25%]">
+                <button class="bg-blue-800 text-white px-3 py-1 rounded-md hover:bg-blue-700 inline-flex items-center space-x-1 ml-2">
+                  <span>pdf</span>
+              </button>
+              </td>
+              @if(Auth::user()->userType == 'branchAdmin')  
+              <td class="px-8 py-5 text-gray-500 border-b border-gray-400 w-[25%]">
                 <!-- Edit Button -->
+               
                 <button class="bg-green-800 text-white px-3 py-1 rounded-md hover:bg-green-700 inline-flex items-center space-x-1">
-                    <span>Edit</span>
+                    <span>asign</span>
                 </button>
+               
                 <button class="bg-red-800 text-white px-3 py-1 rounded-md hover:bg-red-700 inline-flex items-center space-x-1 ml-2">
                     <span>Delete</span>
                 </button>
-              </td>   
+                
+              </td>  
+              @endif
+
+
+              @if(in_array(Auth::user()->userType, ['subAdmin', 'branchAdmin', 'user']))
+              <td class="px-8 py-5 text-gray-500 border-b border-gray-400 w-[25%]">
+              <a href="{{ route('complain.inquaring') }}" class="bg-yellow-800 text-white px-3 py-1 rounded-md hover:bg-yellow-700 inline-flex items-center space-x-1">
+                <span>view </span>
+            </a>
+              </td>
+              @endif
+           
             </tr>
             
           </tbody>
@@ -98,11 +155,7 @@
     
     <!-- SweetAlert for Confirmation Popup -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    
-    <script>  
-      $( document ).ready(function() {
-         new DataTable('#inquaringTable');
-      });</script>
+
 
     <script>  
       $( document ).ready(function() {

@@ -38,7 +38,7 @@
                 User E-mail
               </th>
               <th class="px-8 py-3 border-b border-gray-400 w-[15%]">
-                Created At
+                branch name
               </th>
               <th class="px-8 py-3 border-b border-gray-400 w-[25%]">
                 Action
@@ -60,7 +60,7 @@
                 {{ $user->email }}
               </td>
               <td class="px-8 py-5 text-gray-500 border-b border-gray-400 w-[15%]">
-                {{ $user->created_at }}
+                {{ $user->branch ? $user->branch->branch_name : 'No Branch Assigned' }}
               </td>
               <td class="px-8 py-5 text-gray-500 border-b border-gray-400 w-[25%]">
                 <a href="{{ route('users.edit', $user->id) }}" 

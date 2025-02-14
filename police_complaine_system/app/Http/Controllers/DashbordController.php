@@ -13,7 +13,7 @@ class DashbordController extends Controller
     public function index()
     {
         // all users data view this function
-        return view('system.all.view_dashbord');
+        return view('system.user_pages.pending');
     }
 
 }
