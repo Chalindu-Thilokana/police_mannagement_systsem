@@ -8,14 +8,12 @@
         <div class="p-10 min-w-[1000px]">
           <div class="flex justify-between items-center">
             <div>
-              <p class="text-lg font-bold mb-5">In process complains</p>
+              <p class="text-lg font-bold mb-5">In details of complains</p>
               <p class="text-gray-500">
-                A list of all the crime categories. You can manage detais of crime category
+                A list of all the details of complains. You can view   details of complains
               </p>
             </div>
-            <button id="openModalBtn" class="bg-blue-900 text-white px-8 py-3 rounded-md">
-                Add Crime Category
-            </button>
+           
           </div>
         </div>
 
@@ -23,16 +21,33 @@
 
         <!-- Table -->
 
-        <div class="flex justify-center items-center  p-5">
-        <table class="w-full text-left min-w-[1000px] " id="pendingTable">
+         <div class="flex  items-center  p-5"> {{-- justify-center --- me class eka ahak kala--}}
+
+          {{--
+        <table class="w-full text-left min-w-[1000px] responsive" id="pendingTable">
 
           <thead>
-            <tr>
+            <tr >
               <th class="px-8 py-3 border-b border-gray-400 w-[25%]">
                 No.
               </th>
               <th class="px-8 py-3 border-b border-gray-400 w-[25%]">
+                name
+              </th>
+              <th class="px-8 py-3 border-b border-gray-400 w-[25%]">
                 Crim Category
+              </th>
+              <th class="px-8 py-3 border-b border-gray-400 w-[25%]">
+                address 
+              </th>
+              <th class="px-8 py-3 border-b border-gray-400 w-[25%]">
+                status  
+              </th>
+              <th class="px-8 py-3 border-b border-gray-400 w-[25%]">
+                topic
+              </th>
+              <th class="px-8 py-3 border-b border-gray-400 w-[25%]">
+                sub admin
               </th>
               <th class="px-8 py-3 border-b border-gray-400 w-[25%]">
                 Created At
@@ -56,26 +71,75 @@
                 
               </td>
               <td class="px-8 py-5 text-gray-500 border-b border-gray-400 w-[25%]">
+                
+              </td>
+              <td class="px-8 py-5 text-gray-500 border-b border-gray-400 w-[25%]">
+                
+              </td>
+               <td class="px-8 py-5 text-gray-500 border-b border-gray-400 w-[25%]">
+                
+              </td>
+              <td class="px-8 py-5 text-gray-500 border-b border-gray-400 w-[25%]">
+                
+              </td>
+              <td class="px-8 py-5 text-gray-500 border-b border-gray-400 w-[25%]">
+                
+              </td>
+              <td class="px-8 py-5 text-gray-500 border-b border-gray-400 w-[25%]">
                 <!-- Edit Button -->
-                <button class="bg-green-800 text-white px-3 py-1 rounded-md hover:bg-green-700 inline-flex items-center space-x-1">
-                    <span>Edit</span>
-                </button>
+                
+                <button class="bg-blue-800 text-white px-3 py-1 rounded-md hover:bg-blue-700 inline-flex items-center space-x-1">
+                  <span>pdf</span>
+              </button>
+              @if(Auth::user()->userType == 'branchAdmin')   
                 <button class="bg-red-800 text-white px-3 py-1 rounded-md hover:bg-red-700 inline-flex items-center space-x-1 ml-2">
                     <span>Delete</span>
                 </button>
+              @endif
               </td>   
             </tr>
             
           </tbody>
         </table>
-        </div>
-
+      --}}
+        
+          <!-- Header -->
+        
+          <div class="flex justify-between items-center ">
+          <!-- Details -->
+          <div class="mt-4 space-y-3 text-gray-800">
+              <p><span class="font-semibold">Name:</span> John Doe</p>
+              <p><span class="font-semibold">Branch:</span> Colombo HQ</p>
+              <p><span class="font-semibold">Created Date:</span> 2025-02-14</p>
+              <p><span class="font-semibold">Updated Date:</span> 2025-02-15</p>
+              <p><span class="font-semibold">Status:</span> <span class="text-green-600 font-bold">Approved</span></p>
+              <p><span class="font-semibold">Address:</span> 123, Galle Road, Colombo</p>
+              <p><span class="font-semibold">Phone:</span> 011-2345678</p>
+              <p><span class="font-semibold">Email:</span> john.doe@police.lk</p>
+              <p><span class="font-semibold">Description:</span> Complaint regarding illegal activity reported in Colombo district.</p>
+          
+          
+            </div>
+      
 
      
+      
+        </div>
 
+                  <!-- Actions -->
+                
+         </div>
+
+         @if(in_array(Auth::user()->userType, ['subAdmin', 'branchAdmin', ]))
+     
+         <div class="mt-4 space-x-3 flex  justify-center items-center  p-5">
+          <button class="bg-green-800 text-white px-3 py-1 rounded-md hover:bg-green-700 inline-flex items-center space-x-1">
+            <span>incuvery</span></button>
+          
       </div>
+      @endif
     </div>  
-
+   
   </section>
 
   @if(session('success'))
@@ -104,9 +168,6 @@
          new DataTable('#pendingTable');
       });</script>
 
-    <script>  
-      $( document ).ready(function() {
-         new DataTable('#pendingTable');
-      });</script>
+   
 
 @endsection

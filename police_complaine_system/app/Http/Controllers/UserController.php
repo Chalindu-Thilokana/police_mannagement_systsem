@@ -11,13 +11,18 @@ use Illuminate\Validation\ValidationException;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Auth;
+
 
 class UserController extends Controller
 {
     //view users
     public function index()
-    {
-        $users=User::all();
+    {  
+
+        $branchId = Auth::user()->branch_id;
+        
+        $users=User::where('branch_id', $branchId)->where('userType', 'SubAdmin')->get();
         return view('system.supper_admin.user.users', compact('users'));
     }
 
@@ -29,26 +34,30 @@ class UserController extends Controller
 
     //create user
     public function store(Request $request) 
-    {
+   
+       {
         try {
             $request->validate([
                 'name' => 'required|string|max:255',
                 'email' => 'required|string|email|max:255|unique:users',
                 'password' => ['required', 'confirmed', Rules\Password::defaults()],
                 'role' => 'required|in:branchAdmin,SubAdmin', // Validation expects 'role'
+              
             ]);
-
+            $branchId = Auth::user()->branch_id;
             $user = User::create([
                 'name' => $request->name,
                 'email' => $request->email,
                 'password' => Hash::make($request->password),
                 'userType' => $request->role, // Use correct field name from form
+                'branch_id' => $branchId,
             ]);
 
             return redirect()->route('users.index')->with('success', 'User added successfully!');
         } catch (\Exception $e) {
-            return redirect()->back()->with('error', 'Something went wrong: ' . $e->getMessage());
+            alert()->error('error', 'Something went wrong: ' . $e->getMessage());
         }
+        return redirect()->back();
     }
 
     //edit user form
@@ -66,6 +75,7 @@ class UserController extends Controller
                 'name' => 'required|string|max:255',
                 'email' => ['required', 'email', 'max:255', Rule::unique('users')->ignore($user->id)],
                 'role' => 'required|in:branchAdmin,SubAdmin',
+                
 
                 // Password validation (if user wants to update)
                 'old_password' => 'nullable|string|min:6',
@@ -79,11 +89,12 @@ class UserController extends Controller
     
                 $user->password = Hash::make($request->new_password);
             }
-
+            $branchId = Auth::user()->branch_id;
             $user->update([
                 'name' => $request->name,
                 'email' => $request->email,
                 'userType' => $request->role,
+                'branch_id' => $branchId,
             ]);
 
             return redirect()->route('users.index')->with('success', 'User updated successfully!');
@@ -97,10 +108,7 @@ class UserController extends Controller
     {
         try {
             // Prevent SuperAdmin from deleting themselves
-            if (auth()->user()->id === $user->id) {
-                return redirect()->back()->with('error', 'You cannot delete yourself!');
-            }
-
+            
             $user->delete();
 
             return redirect()->route('users.index')->with('success', 'User deleted successfully!');

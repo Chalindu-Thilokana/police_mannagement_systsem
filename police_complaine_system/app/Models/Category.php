@@ -11,4 +11,10 @@ class Category extends Model
         
         'name',
     ];
+
+
+    public function complain()
+    {
+        return $this->hasMany(Complain::class,'category_id' );
+    }
 }

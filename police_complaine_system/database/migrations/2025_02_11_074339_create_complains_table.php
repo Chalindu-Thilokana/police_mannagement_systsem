@@ -13,6 +13,18 @@ return new class extends Migration
     {
         Schema::create('complains', function (Blueprint $table) {
             $table->id();
+          
+            $table->char('nic');
+            $table->string('topic');
+            $table->string('phone');
+            $table->string('status')->default('pending');
+            $table->string('file')->nullable();
+            $table->text('details');
+            $table->text('incuvery_data')->nullable();
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('branch_id');
+            $table->unsignedBigInteger('category_id');
+            $table->unsignedBigInteger('admin_id')->nullable();
             $table->timestamps();
         });
     }

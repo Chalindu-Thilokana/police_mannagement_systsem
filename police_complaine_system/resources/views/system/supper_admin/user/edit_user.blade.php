@@ -26,13 +26,13 @@
             </div>
 
             <!-- Password Update Fields -->
-            <div class="mt-8">
+           {{-- <div class="mt-8">
                 <label class="block font-semibold text-black">Old Password</label>
                 <input type="password" name="old_password"
-                    class="mt-2 block w-full h-12 rounded-md border border-gray-400 shadow-sm sm:text-sm md:text-base pl-3">
+                    class="mt-2 block w-full h-12 rounded-md border border-gray-400 shadow-sm sm:text-sm md:text-base pl-3" >
                 @error('old_password') <p class="text-red-500 text-sm mt-1">{{ $message }}</p> @enderror
-            </div>
-
+            </div> --}}
+            
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8">
                 <div class="mt-8">
                     <label class="block font-semibold text-black">New Password</label>
