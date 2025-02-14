@@ -89,6 +89,21 @@ class ComplainController extends Controller
         return redirect()->back();
     }
 
+    public function reject($id)
+    {
+        try {
+            $complain = Complain::findOrFail($id);
+            $complain->status = 'Rejected';
+            $complain->save();
+
+            Alert::success('Success', 'Complain rejected successfully!');
+        } catch (\Exception $e) {
+            Alert::error('Error', 'Something went wrong!');
+        }
+        return redirect()->back();
+    }
+
+
     /**
      * Display the specified resource.
      */

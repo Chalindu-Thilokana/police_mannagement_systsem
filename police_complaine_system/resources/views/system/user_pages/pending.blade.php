@@ -114,6 +114,12 @@
                 <button class="bg-red-800 text-white px-3 py-1 rounded-md hover:bg-red-700 inline-flex items-center space-x-1 ml-2">
                     <span>Delete</span>
                 </button>
+                <form action="{{ route('complain.reject', $complain->id) }}" method="POST" style="display:inline;">
+                  @csrf
+                  <button type="submit" class="bg-black text-white px-3 py-1 rounded-md hover:bg-gray-700 inline-flex items-center space-x-1 ml-2">
+                      <span>Reject</span>
+                  </button>
+              </form>
                 
               </td>  
               @endif

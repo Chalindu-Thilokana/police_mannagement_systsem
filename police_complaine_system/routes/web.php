@@ -58,6 +58,10 @@ Route::middleware([
             Route::get('/users/{id}/edit', [UserController::class, 'edit'])->name('users.edit');
             Route::put('/users/{user}', [UserController::class, 'update'])->name('users.update');
             Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('users.destroy');
+
+            //reject route(isuru)
+            Route::post('/complain/reject/{id}', [ComplainController::class, 'reject'])->name('complain.reject');
+
             
         });
 
