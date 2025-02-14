@@ -131,8 +131,16 @@ class ComplainController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Complain $complain)
+    public function destroy($id)
     {
-        //
+        try {
+            $complain = Complain::findOrFail($id);
+            $complain->delete();
+
+            Alert::success('Success', 'Complain deleted successfully!');
+        } catch (\Exception $e) {
+            Alert::error('Error', 'Something went wrong!');
+        }
+        return redirect()->back();
     }
 }

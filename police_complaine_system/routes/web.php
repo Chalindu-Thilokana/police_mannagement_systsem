@@ -61,6 +61,8 @@ Route::middleware([
 
             //reject route(isuru)
             Route::post('/complain/reject/{id}', [ComplainController::class, 'reject'])->name('complain.reject');
+            Route::post('/complain/delete/{id}', [ComplainController::class, 'destroy'])->name('complain.delete');
+            
 
             
         });
