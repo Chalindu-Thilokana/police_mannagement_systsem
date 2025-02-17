@@ -24,8 +24,8 @@
         
 
         <!-- Table -->
-
-        <div class="flex  items-center   p-5">{{-- justify-center --- me class eka ahak kala--}}
+        <div class="flex  items-center   p-6">
+        <div class="flex  items-center   p-6">{{-- justify-center --- me class eka ahak kala--}}
         <table class="w-full text-left min-w-[1000px] " id="inquaringTable">
 
           <thead>
@@ -56,12 +56,11 @@
                 pdf
               </th>
               @if(Auth::user()->userType == 'branchAdmin')  
-
+              
               <th class="px-8 py-3 border-b border-gray-400 w-[30%]">
                   admin Action
               </th>
               @endif
-              @if(in_array(Auth::user()->userType, ['subAdmin', 'branchAdmin', 'user']))@endif
               @if(in_array(Auth::user()->userType, ['SubAdmin', 'branchAdmin', 'user','SuperAdmin']))
               <th class="px-8 py-3 border-b border-gray-400 w-[30%]">
                  sub admin Action
@@ -80,13 +79,23 @@
                 {{ $complain->user->name }}
               </td>
               <td class="px-8 py-5 text-gray-500 border-b border-gray-400 w-[25%]">
-                {{ $complain->category->name }}
+                @if (@isset( $complain->category->name  ))
+                  
+                {{ $complain->category->name }} </span> 
+                @else
+                <span class="text-gray-500">No Category</span>
+                @endif
               </td>
               <td class="px-8 py-5 text-gray-500 border-b border-gray-400 w-[25%]">
                 {{ $complain->address }}
               </td>
               <td class="px-8 py-5 text-gray-500 border-b border-gray-400 w-[25%]">
                 {{ $complain->status }}
+                 @if ($complain->status =='Rejected') 
+                  <a  href="{{route('asign_create',$complain->id)}}" class="bg-green-800 text-white px-3 py-1 rounded-md hover:bg-green-700 inline-flex items-center space-x-1" >
+                 
+                    <span>trancefer</span></a>
+                    @endif
               </td>
               <td class="px-8 py-5 text-gray-500 border-b border-gray-400 w-[25%]">
                 {{ $complain->topic }}
@@ -96,7 +105,7 @@
               </td>
               <td class="px-8 py-5 text-gray-500 border-b border-gray-400 w-[25%]">
                  
-                    <a href="{{ asset('complain/' . $complain->file) }}" target="_blank">
+                    <a href="{{ route('generate-pdf', $complain->id) }}" target="_blank">
                         <button class="bg-blue-800 text-white px-3 py-1 rounded-md hover:bg-blue-700 inline-flex items-center space-x-1 ml-2">
                             <span>PDF</span>
                         </button>
@@ -106,10 +115,10 @@
               @if(Auth::user()->userType == 'branchAdmin')  
               <td class="px-8 py-5 text-gray-500 border-b border-gray-400 w-[25%]">
                 <!-- Edit Button -->
-               
-                <button class="bg-green-800 text-white px-3 py-1 rounded-md hover:bg-green-700 inline-flex items-center space-x-1">
+                <div class="flex justify-start space-x-2">
+                <a  href="{{route('asign_create',$complain->id)}}" class="bg-green-800 text-white px-3 py-1 rounded-md hover:bg-green-700 inline-flex items-center space-x-1" >
                     <span>asign</span>
-                </button>
+                </a>
                
                 <form action="{{ route('complain.delete', $complain->id) }}" method="POST" style="display:inline;">
                   @csrf
@@ -122,13 +131,13 @@
                   <button type="submit" class="bg-black text-white px-3 py-1 rounded-md hover:bg-gray-700 inline-flex items-center space-x-1 ml-2">
                       <span>Reject</span>
                   </button>
+                  </div>
               </form>
                 
               </td>  
               @endif
 
 
-              @if(in_array(Auth::user()->userType, ['subAdmin', 'branchAdmin', 'user']))@endif
               @if(in_array(Auth::user()->userType, ['SuperAdmin', 'branchAdmin', 'user','SubAdmin',]))
               <td class="px-8 py-5 text-gray-500 border-b border-gray-400 w-[25%]">
                 <a href="{{ route('complain.show', $complain->id) }}" class="bg-yellow-800 text-white px-3 py-1 rounded-md hover:bg-yellow-700 inline-flex items-center space-x-1">
@@ -145,13 +154,18 @@
         </table>
         </div>
 
-
+        </div>
      
 
       </div>
     </div>  
 
   </section>
+
+  <!-- Modal  sub admin asign-->
+  
+ 
+
 
   @if(session('success'))
       <script>
@@ -166,6 +180,8 @@
   @endif
 
   
+  
+
   
 
     <!-- SweetAlert for Success Message -->

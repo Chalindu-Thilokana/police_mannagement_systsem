@@ -109,15 +109,30 @@
           <!-- Details -->
           <div class="mt-4 space-y-3 text-gray-800">
               <p><span class="font-semibold">Name:</span> {{ $complain->user->name }}</p>
-              <p><span class="font-semibold">Branch:</span> {{ $complain->branch->branc_name }}</p>
+              <p><span class="font-semibold">Branch:</span> @if (@isset($complain->branch->branch_name)){{ $complain->branch->branch_name }}</span> 
+                @else <span> not brach </span> @endif </p>
+              <p><span class="font-semibold">category:</span>  @if (@isset( $complain->category->name  ))
+                  
+                {{ $complain->category->name }} </span> 
+                @else <span> catagory is deleted  please enter new complaince </span> 
+               
+                     @endif</p>
               <p><span class="font-semibold">Created Date:</span> {{ $complain->created_at }}</p>
               <p><span class="font-semibold">Updated Date:</span> {{ $complain->updated_at }}</p>
               <p><span class="font-semibold">Status:</span> <span class="text-green-600 font-bold">{{ $complain->status }}</span></p>
               <p><span class="font-semibold">Address:</span> {{ $complain->address }}</p>
               <p><span class="font-semibold">Phone:</span> {{ $complain->phone }}</p>
               <p><span class="font-semibold">Email:</span> {{ $complain->user->email }}</p>
+              <p><span class="font-semibold">topic:</span> {{ $complain->topic }}</p>
               <p><span class="font-semibold">Description:</span> {{ $complain->details }}</p>
-              <p><span class="font-semibold">Description:</span> {{ $complain->file }}</p>
+              <p><span class="font-semibold">Description:</span> @isset($complain->incuvery_data){{ $complain->incuvery_data }} @endisset</p>
+             
+              <p><span class="font-semibold">oficer:  <span>@if (@isset($complain->admin->name ))
+                  
+             {{ $complain->admin->name }} </span> 
+             @else <span> not asign oficer</span> 
+            
+                  @endif  </p>
           
               @php
     // Prepend 'storage/' to the file path stored in the database
@@ -158,9 +173,16 @@
                 
          </div>
 
+
          @if(in_array(Auth::user()->userType, ['subAdmin', 'branchAdmin', ]))
-     
+         
+   
          <div class="mt-4 space-x-3 flex  justify-center items-center  p-5">
+
+
+          <a href="{{ route('dashboard') }}" class="mr-3 px-3 py-1 border border-gray-400 rounded-md shadow-sm font-semibold text-black bg-white hover:bg-gray-500">
+            Cancel
+        </a>
           <button class="bg-green-800 text-white px-3 py-1 rounded-md hover:bg-green-700 inline-flex items-center space-x-1">
             <span>incuvery</span></button>
           

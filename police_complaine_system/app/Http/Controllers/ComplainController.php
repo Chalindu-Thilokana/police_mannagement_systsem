@@ -7,6 +7,8 @@ use App\Models\Branch;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class ComplainController extends Controller
 {
@@ -85,7 +87,7 @@ class ComplainController extends Controller
             Alert::success('Success', 'Complain added successfully!');
       
         } catch (\Exception $e) {
-            Alert::error('Error', 'Something went wrong!');
+            Alert::error('Error', 'Something went wrong!'. $e->getMessage());
            
         }
         return redirect()->back();
@@ -100,7 +102,7 @@ class ComplainController extends Controller
 
             Alert::success('Success', 'Complain rejected successfully!');
         } catch (\Exception $e) {
-            Alert::error('Error', 'Something went wrong!');
+            Alert::error('Error', 'Something went wrong!'. $e->getMessage());
         }
         return redirect()->back();
     }
@@ -109,9 +111,37 @@ class ComplainController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Complain $complain)
+    public function show(Request $request,Complain $complain, $id)
     {
         //
+        
+        $branchId = Auth::user()->branch_id;
+        $users=User::where('branch_id', $branchId)->where('userType', 'SubAdmin')->get();
+        return view('system.admin_bran.task', compact('id','users',));
+    }
+
+    public function asign(Request $request,Complain $complain,$id)//asign sub admin 
+    {
+        // 
+
+        //dd($request->all());
+
+        try {
+        $request->validate([
+            'asign' => 'required|exists:users,id',
+        ]);
+
+        $complain = Complain ::find($id);
+        $complain->update([
+
+            'admin_id' => $request['asign'],
+        'status' => 'Assigned',]);
+            Alert::success('Success', 'Complain deleted successfully!');
+            return redirect()->route('dashboard');
+        } catch (\Exception $e) 
+             {
+            Alert::error('Error', 'Something went wrong!'. $e->getMessage());
+        return redirect()->back(); }
     }
 
     /**

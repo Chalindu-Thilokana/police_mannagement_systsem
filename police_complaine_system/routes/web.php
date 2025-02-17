@@ -9,7 +9,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ComplainController;
-
+use App\Http\Controllers\PDFController;
 
 
 use App\Http\Controllers\BranchController;
@@ -62,9 +62,10 @@ Route::middleware([
             //reject route(isuru)
             Route::post('/complain/reject/{id}', [ComplainController::class, 'reject'])->name('complain.reject');
             Route::post('/complain/delete/{id}', [ComplainController::class, 'destroy'])->name('complain.delete');
-            
+           
+            Route::get('/asign/create{id}',[ComplainController::class, 'show'])->name('asign_create');
+            Route::put('/asign/{id}',[ComplainController::class, 'asign'])->name('asign');
 
-            
         });
 
 
@@ -126,11 +127,12 @@ Route::middleware([
         });
 
 
-        Route::middleware(['auth:sanctum', 'verified', 'userType:branchAdmin,subAdmin,SuperAdmin,user'])->group(function () {
+        Route::middleware(['auth:sanctum', 'verified', 'userType:branchAdmin,SubAdmin,SuperAdmin,user'])->group(function () {
             //only sub & branch admin can access this route
             Route::get('/complain/pending', [ComplainController::class, 'pending'])->name('complain.pending');
             Route::get('/complain/{id}', [ComplainController::class, 'inquaring'])->name('complain.show');
-
+          
+            Route::get('/generate-pdf/{id}', [PDFController::class, 'generatePDF'])->name('generate-pdf');
 
 
 
