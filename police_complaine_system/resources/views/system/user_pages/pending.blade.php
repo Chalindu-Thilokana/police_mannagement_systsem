@@ -206,6 +206,9 @@
                 {{ $complain->address }}
               </td>
               <td class="px-8 py-5 text-gray-500 border-b border-gray-400 w-[25%]">
+               
+                
+
                 {{ $complain->status }}
                 @if(Auth::user()->userType == 'branchAdmin')
                  @if ($complain->status =='Rejected') 
@@ -213,6 +216,7 @@
                  
                     <span>trancefer</span></a>
                     @endif
+                    
                     @endif
 
               </td>
