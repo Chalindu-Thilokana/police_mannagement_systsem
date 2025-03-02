@@ -11,13 +11,14 @@
     <div class="max-w-4xl mx-auto bg-white shadow-lg rounded-lg p-10 border border-gray-300">
         <!-- Header -->
         <div class="text-center border-b-2 border-gray-400 pb-4 mb-6">
-            <img src="{{ asset('assets/logo.png') }}" alt="Police Logo" class="mx-auto w-24">
             <h1 class="text-2xl font-bold text-gray-800 uppercase mt-2">Sri Lanka Police Inquiry Report</h1>
         </div>
 
         <!-- Details Section -->
         <div class="space-y-3 text-gray-700">
             <p><span class="font-semibold">Name:</span> {{ $complain->user->name }}</p>
+            <p><span class="font-semibold">NIC number:</span> {{ $complain->nic }}</p>
+
             <p><span class="font-semibold">Branch:</span> {{ $complain->branch->branch_name ?? 'Not Assigned' }}</p>
             <p><span class="font-semibold">Category:</span> {{ $complain->category->name ?? 'Deleted - Please Re-enter Complaint' }}</p>
             <p><span class="font-semibold">Created Date:</span> {{ $complain->created_at->format('d M Y, h:i A') }}</p>
