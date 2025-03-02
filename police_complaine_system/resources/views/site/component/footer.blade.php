@@ -2,8 +2,8 @@
 <footer class="bg-blue-950 text-white py-10 mt-10">
     <div class="container mx-auto flex justify-between items-center">
       <!-- Left Logo -->
-      <div class="flex-shrink-0">
-        <img src="{{ asset('assets/logo_white.png') }}" alt="Sri Lanka Police Logo" class="h-16">
+      <div class="flex-shrink-0  ">
+        <img src="{{ asset('assets/logo.png') }}" alt="Sri Lanka Police Logo" class="h-16">
       </div>
       
       <!-- Footer Content -->

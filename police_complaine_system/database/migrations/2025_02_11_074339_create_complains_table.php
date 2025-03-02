@@ -25,6 +25,7 @@ return new class extends Migration
             $table->unsignedBigInteger('branch_id');
             $table->unsignedBigInteger('category_id');
             $table->unsignedBigInteger('admin_id')->nullable();
+            $table->unsignedBigInteger('trance_id')->nullable();
             $table->timestamps();
         });
     }

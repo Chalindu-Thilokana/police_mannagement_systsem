@@ -9,7 +9,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ComplainController;
-
+use App\Http\Controllers\PDFController;
 
 
 use App\Http\Controllers\BranchController;
@@ -58,7 +58,19 @@ Route::middleware([
             Route::get('/users/{id}/edit', [UserController::class, 'edit'])->name('users.edit');
             Route::put('/users/{user}', [UserController::class, 'update'])->name('users.update');
             Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('users.destroy');
-            
+
+            //reject route(isuru)
+            Route::post('/complain/reject/{id}', [ComplainController::class, 'reject'])->name('complain.reject');
+            Route::post('/complain/delete/{id}', [ComplainController::class, 'destroy'])->name('complain.delete');
+           
+            Route::get('/asign/create{id}',[ComplainController::class, 'show'])->name('asign_create');
+            Route::put('/asign/{id}',[ComplainController::class, 'asign'])->name('asign');
+
+            Route::get('/trancefer/create{id}',[ComplainController::class, 'trance_create'])->name('trancefer_create');
+            Route::put('/trancefer/{id}',[ComplainController::class, 'trancefer'])->name('trancefer');
+             
+
+
         });
 
 
@@ -98,10 +110,11 @@ Route::middleware([
         });
 
 
-        Route::middleware(['auth:sanctum', 'verified', 'userType:SubAdmin'])->group(function () {
+        Route::middleware(['auth:sanctum', 'verified', 'userType:SubAdmin,branchAdmin'])->group(function () {
             //only sub admin can access this route
               //sub admins
-           
+              Route::post('/inquaring/{id}',[ComplainController::class, 'update'])->name('inquaring');
+
     
   
   
@@ -112,18 +125,26 @@ Route::middleware([
         Route::middleware(['auth:sanctum', 'verified', 'userType:user'])->group(function () {
             //only user admin can access this route
             Route::get('/complain/create', [ComplainController::class, 'create'])->name('complain');
-            Route::get('/complain/store', [ComplainController::class, 'create'])->name('complain.store');
+
+            //rourte(isuru)
+            Route::post('/complain/store', [ComplainController::class, 'store'])->name('complain.store');
           
 
         });
 
 
-        Route::middleware(['auth:sanctum', 'verified', 'userType:branchAdmin,subAdmin,SuperAdmin,user'])->group(function () {
+        Route::middleware(['auth:sanctum', 'verified', 'userType:branchAdmin,SubAdmin,SuperAdmin,user'])->group(function () {
             //only sub & branch admin can access this route
             Route::get('/complain/pending', [ComplainController::class, 'pending'])->name('complain.pending');
-            Route::get('/complain/inquaring', [ComplainController::class, 'inquaring'])->name('complain.inquaring');
+            Route::get('/complain/{id}', [ComplainController::class, 'inquaring'])->name('complain.show');
+          
+            Route::get('/generate-pdf/{id}', [PDFController::class, 'generatePDF'])->name('generate-pdf');
+            Route::get('/report/generate-pdf', [PDFController::class, 'reportgeneratePDF'])->name('report-generate-pdf');
+ 
 
-
+         Route::get('complin_filt',[ComplainController::class, 'filter'])->name('fillt_mycomplaince');
 
         });
+       // Route::get('/complain/filter', [ComplainController::class, 'filter'])->name('complain.filter');
+
 });

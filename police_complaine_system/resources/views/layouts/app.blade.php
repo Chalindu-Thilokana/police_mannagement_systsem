@@ -46,4 +46,8 @@
 
         @livewireScripts
     </body>
+    <footer class="bg-white text-gray-800 py-4 px-6 flex justify-between items-center border-t border-gray-300">
+        <span class="text-sm">&copy; 2025 sri lanka police. All rights reserved.</span>
+        <div class="text-sm text-gray-600">Privacy Policy | Terms of Service | Contact</div>
+    </footer>
 </html>
